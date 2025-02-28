@@ -9,9 +9,9 @@ This fix for Ubuntu Server ISO extraction in Cubic was developed collaboratively
 
 The original code was copied from the official Cubic repository at https://code.launchpad.net/cubic using 
 
-    ```bash
+```
     bzr branch lp:cubic
-    ```
+```
 
 This fix is provided as a temporary solution for those experiencing issues with Ubuntu Server ISO extraction. We will discontinue maintenance of this fix once the bug is fixed in the official Cubic codebase. If you use this fix, please consider submitting it to the Cubic developers to help improve the original software.
 
