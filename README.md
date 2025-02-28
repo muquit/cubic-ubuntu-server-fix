@@ -1,6 +1,6 @@
 # Ubuntu Server ISO Extraction Bug Fix for Cubic
 
-Cubic (Custom Ubuntu ISO Creator) is a GUI wizard to create a customized Live ISO image for Ubuntu and Debian based distributions.
+> Cubic (Custom Ubuntu ISO Creator) is a GUI wizard to create a customized Live ISO image for Ubuntu and Debian based distributions.
 
 As of February 27, 2025, the official 
 [Cubic](https://github.com/PJ-Singh-001/Cubic) tool (version 2024.09) is unable to properly extract and process Ubuntu Server ISOs.
