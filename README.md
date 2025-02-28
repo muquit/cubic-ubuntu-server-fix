@@ -63,7 +63,7 @@ For Ubuntu Server ISOs, the fix properly extracts both squashfs files, ensuring 
 
 ## The Problem
 
-When attempting to customize an Ubuntu Server ISO with Cubic, the extraction process would fail with the error: "Unable to extract the compressed Linux file system." This happened because:
+When attempting to customize an Ubuntu Server ISO with Cubic, the extraction process would fail with the error: *Error: Unable to extract the compressed Linux file system.* This happened because:
 
 1. Ubuntu Server ISOs use a different structure than Desktop ISOs, with two squashfs files that need to be combined
 2. The original extraction method in Cubic was not designed to handle overlay squashfs files
