@@ -50,10 +50,12 @@ For Ubuntu Server ISOs, the fix properly extracts both squashfs files, ensuring 
   ```bash
   cd cubic
   ./build.sh
+  ```
+- If build is successful `cubic_2024.09_all.deb` will be there
+  ```
   ./install.sh
   cd ..
   ```
-- If build is successful `cubic_2024.09_all.deb` will be there
 
 ## The Problem
 
