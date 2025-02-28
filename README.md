@@ -17,6 +17,7 @@ The original code was copied from the official Cubic repository at https://code.
 
 This fix is provided as a temporary solution for those experiencing issues with Ubuntu Server ISO extraction. We will discontinue maintenance of this fix once the bug is fixed in the official Cubic codebase. If you use this fix, please consider submitting it to the Cubic developers to help improve the original software.
 
+If you have any questions or issues with this fix, please open an issue.
 
 ## Introduction
 
@@ -274,4 +275,3 @@ To implement this fix:
 2. Replace the `extract_squashfs()` function with the code provided above
 3. Ensure all imports are properly included
 
-If you have any questions or issues with this fix, please open an issue.
