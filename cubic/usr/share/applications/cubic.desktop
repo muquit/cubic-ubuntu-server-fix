@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Cubic
+Comment=Custom Ubuntu ISO Creator
+Path=/usr/share/cubic
+Exec=/usr/bin/cubic
+Terminal=false
+Type=Application
+Icon=cubic
+StartupNotify=true
+Categories=Utility;Application;System;
+StartupWMClass=cubic_wizard.py

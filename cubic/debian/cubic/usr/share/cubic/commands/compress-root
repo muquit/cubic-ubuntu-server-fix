@@ -1,0 +1,72 @@
+#!/bin/bash
+
+########################################################################
+#                                                                      #
+# compress-root                                                        #
+#                                                                      #
+# Copyright (C) 2020 PJ Singh <psingh.cubic@gmail.com>                 #
+#                                                                      #
+########################################################################
+
+########################################################################
+#                                                                      #
+# This file is part of Cubic - Custom Ubuntu ISO Creator.              #
+#                                                                      #
+# Cubic is free software: you can redistribute it and/or modify        #
+# it under the terms of the GNU General Public License as published by #
+# the Free Software Foundation, either version 3 of the License, or    #
+# (at your option) any later version.                                  #
+#                                                                      #
+# Cubic is distributed in the hope that it will be useful,             #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of       #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the         #
+# GNU General Public License for more details.                         #
+#                                                                      #
+# You should have received a copy of the GNU General Public License    #
+# along with Cubic. If not, see <http://www.gnu.org/licenses/>.        #
+#                                                                      #
+########################################################################
+
+# Compress the root file system for Cubic.
+
+########################################################################
+# Arguments
+########################################################################
+
+program=${0}
+number_arguments=${#}
+source_file_path=${1}
+target_file_path=${2}
+compression=${3}
+
+# echo "program..................... ${program}"
+# echo "number of arguments......... ${number_arguments}"
+# echo "source file path............ ${source_file_path}"
+# echo "target file path............ ${target_file_path}"
+# echo "compression................. ${compression}"
+
+########################################################################
+# Command
+########################################################################
+
+# unshare --fork --pid --kill-child -- \
+mksquashfs "${source_file_path}" "${target_file_path}" \
+ -noappend                 \
+ -comp ${compression}      \
+ -wildcards                \
+ -e "proc/*"               \
+ -e "proc/.*"              \
+ -e "run/*"                \
+ -e "run/.*"               \
+ -e "tmp/*"                \
+ -e "tmp/.*"               \
+ -e "var/crash/*"          \
+ -e "var/crash/.*"         \
+ -e "swapfile"             \
+ -e "root/.bash_history"   \
+ -e "root/.cache"          \
+ -e "root/.wget-hsts"      \
+ -e "home/*/.bash_history" \
+ -e "home/*/.cache"        \
+ -e "home/*/.wget-hsts"
+

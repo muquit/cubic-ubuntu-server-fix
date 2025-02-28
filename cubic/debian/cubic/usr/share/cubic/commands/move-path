@@ -1,0 +1,108 @@
+#!/bin/bash
+
+########################################################################
+#                                                                      #
+# move-path                                                            #
+#                                                                      #
+# Copyright (C) 2020 PJ Singh <psingh.cubic@gmail.com>                 #
+#                                                                      #
+########################################################################
+
+########################################################################
+#                                                                      #
+# This file is part of Cubic - Custom Ubuntu ISO Creator.              #
+#                                                                      #
+# Cubic is free software: you can redistribute it and/or modify        #
+# it under the terms of the GNU General Public License as published by #
+# the Free Software Foundation, either version 3 of the License, or    #
+# (at your option) any later version.                                  #
+#                                                                      #
+# Cubic is distributed in the hope that it will be useful,             #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of       #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the         #
+# GNU General Public License for more details.                         #
+#                                                                      #
+# You should have received a copy of the GNU General Public License    #
+# along with Cubic. If not, see <http://www.gnu.org/licenses/>.        #
+#                                                                      #
+########################################################################
+
+# Move a file or directory for Cubic.
+
+########################################################################
+# Constants
+########################################################################
+
+# SOURCE_CUSTOM_DISK_DIRECTORY="custom-live-iso"
+TARGET_CUSTOM_DISK_DIRECTORY="custom-disk"
+
+# SOURCE_CUSTOM_ROOT_DIRECTORY="squashfs-root"
+TARGET_CUSTOM_ROOT_DIRECTORY="custom-root"
+
+########################################################################
+# Arguments
+########################################################################
+
+program=${0}
+number_arguments=${#}
+source_file_path=${1}
+target_file_path=${2}
+user=${3}
+
+# echo "program..................... ${program}"
+# echo "number of arguments......... ${number_arguments}"
+# echo "source file path............ ${source_file_path}"
+# echo "target file path............ ${target_file_path}"
+# echo "user........................ ${user}"
+
+########################################################################
+# Command
+########################################################################
+
+# As a precaution, limit the paths that this command may be execute on.
+# if [[ ( ${source_file_path} =~ ${SOURCE_CUSTOM_DISK_DIRECTORY}$ && \
+#         ${target_file_path} =~ ${TARGET_CUSTOM_DISK_DIRECTORY}$ ) || \
+#       ( ${source_file_path} =~ ${SOURCE_CUSTOM_ROOT_DIRECTORY}$ && \
+#         ${target_file_path} =~ ${TARGET_CUSTOM_ROOT_DIRECTORY}$ ) ]]; then
+
+# As a precaution, limit the paths that this command may be execute on.
+if [[ ${target_file_path} =~ ${TARGET_CUSTOM_DISK_DIRECTORY} || \
+      ${target_file_path} =~ ${TARGET_CUSTOM_ROOT_DIRECTORY} ]]; then
+
+    # Remove the existing directory if it exists.
+    # echo "rm --recursive --force ${target_file_path}"
+    rm --recursive --force "${target_file_path}"
+
+    # Move the source directory to the target directory.
+    # echo "mv ${source_file_path} ${target_file_path}"
+    mv "${source_file_path}" "${target_file_path}"
+
+    # If a user was supplied, change ownership and permissions.
+    if [[ ${user} ]]; then
+
+        # Change the ownership of all files and directories in the
+        # target directory.
+        # echo "chown --recursive ${user}:${user} ${target_file_path}"
+        chown --recursive ${user}:${user} "${target_file_path}"
+
+        # Ensure the owner has write permissions for all files and
+        # directories in the target directory.
+        # echo "chmod --recursive u+w ${target_file_path}"
+        chmod --recursive u+w "${target_file_path}"
+
+    fi
+
+else
+
+    # Use echo $? to check the error status.
+    # http://www.tldp.org/LDP/abs/html/exitcodes.html
+    if [[ ${user} ]]; then
+        echo "Error. Unable to move ${source_file_path} to ${target_file_path} for ${user}."
+    else
+        echo "Error. Unable to move ${source_file_path} to ${target_file_path}."
+    fi
+
+    exit 1
+
+fi
+

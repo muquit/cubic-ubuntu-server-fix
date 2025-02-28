@@ -1,0 +1,4 @@
+python3:Depends=python3:any, python3:any (>= 3.6~)
+perl:Depends=perl:any
+misc:Depends=
+misc:Pre-Depends=

@@ -1,0 +1,142 @@
+Source:             cubic
+Section:            python
+Priority:           optional
+Maintainer:         PJ Singh, <psingh.cubic@gmail.com>
+Standards-Version:  4.1.1
+Build-Depends:
+                    debhelper (>=11.1),
+                    dh-python (>=3.20180325),
+                    python3 (>=3.6.5),
+                    python3-all (>=3.6.5),
+#                   Required for binwalk
+                    binwalk (>=2.1.1),
+#                   Required for dd, du, mkdir, rm, wc; usually preinstalled
+                    coreutils (>=8.28),
+#                   Required for mkisofs; usually preinstalled
+                    genisoimage (>=9:1.1.11),
+#                   Required for GtkSource; gir1.2-gtksource-3.0 is usually preinstalled
+                    gir1.2-gtk-3.0 (>=3.22.30),
+#                   Required to monitor file system events
+                    gir1.2-gtksource-4 (>=4.2.0) | gir1.2-gtksource-3.0 (>=3.24.7),
+#                   Required for libvte-2.91; usually preinstalled
+                    gir1.2-vte-2.91 (>=0.52.1),
+#                   Required for lsinitramfs; usually preinstalled
+                    initramfs-tools (>=0.130),
+#                   Required for isohdpfx.bin
+                    isolinux (>=3:6.03),
+#                   Required for GtkSource.View, GtkSource.SearchContext, and GtkSource.SearchSettings
+                    libgtksourceview-4-0 (>=4.2.0) | libgtksourceview-3.0-1 (>=3.24.7),
+#                   Required for mount, umount; usually preinstalled
+                    mount (>=2.31.1),
+#                   Required for PolicyKit; usually preinstalled
+                    policykit-1 (>=0.105),
+#                   Required for apt.cache; usually preinstalled
+#                   python3-apt (>=1.6.5),
+#                   Required for bash auto completion
+                    python3-argcomplete,
+#                   Required for GTK3 Python Library; usually preinstalled
+                    python3-gi (>=3.26.1),
+#                   Required for sorting alphabetically
+                    python3-icu (>=1.9.8),
+#                   Required for magic
+                    python3-magic (>=2:0.4.15),
+#                   Required for packaging.version
+                    python3-packaging (>=17.1),
+#                   Required for pexpect
+                    python3-pexpect (>=4.2.1),
+#                   Required to get system memory information
+                    python3-psutil (>=5.4.2-1),
+#                   Required for pydbus
+                    python3-pydbus (>=0.6.0),
+#                   Required for Gtk 3; usually preinstalled
+                    python3-pyinotify (>=0.9.6),
+#                   Required for QEMU GTK zoom to fit for Ubuntu > 18.04 LTS
+                    python3-yaml (>=3.12),
+#                   Required to update yaml; usually preinstalled
+                    qemu-system-gui (>=1:4.2) | qemu-system-x86 (<<1:4.2),
+#                   Required for qemu-system-x86_64
+                    qemu-system-x86 (>=1:4.2) | qemu-system-x86 (<<1:4.2),
+#                   Required for rsync; usually preinstalled
+                    rsync (>=3.1.2),
+#                   Required for mksquashfs, unsquashfs
+                    squashfs-tools (>=1:4.3),
+#                   Required for systemd-nspawn
+                    systemd-container (>=237),
+#                   Required for xorriso
+                    xorriso (>=1.4.8)
+X-Python3-Version:  >= 3.6
+Vcs-Bzr:            lp:cubic
+Homepage:           https://github.com/PJ-Singh-001/Cubic
+
+Package:            cubic
+Architecture:       all
+Depends:
+                    ${misc:Depends},
+                    ${python3:Depends},
+#                   Required for binwalk
+                    binwalk (>=2.1.1),
+#                   Required for dd, du, mkdir, rm, wc; usually preinstalled
+                    coreutils (>=8.28),
+#                   Required for mkisofs; usually preinstalled
+                    genisoimage (>=9:1.1.11),
+#                   Required for GtkSource; gir1.2-gtksource-3.0 is usually preinstalled
+                    gir1.2-gtk-3.0 (>=3.22.30),
+#                   Required to monitor file system events
+                    gir1.2-gtksource-4 (>=4.2.0) | gir1.2-gtksource-3.0 (>=3.24.7),
+#                   Required for libvte-2.91; usually preinstalled
+                    gir1.2-vte-2.91 (>=0.52.1),
+#                   Required for lsinitramfs; usually preinstalled
+                    initramfs-tools (>=0.130),
+#                   Required for isohdpfx.bin
+                    isolinux (>=3:6.03),
+#                   Required for GtkSource.View, GtkSource.SearchContext, and GtkSource.SearchSettings
+                    libgtksourceview-4-0 (>=4.2.0) | libgtksourceview-3.0-1 (>=3.24.7),
+#                   Required for mount, umount; usually preinstalled
+                    mount (>=2.31.1),
+#                   Required for PolicyKit; usually preinstalled
+                    policykit-1 (>=0.105),
+#                   Required for apt.cache; usually preinstalled
+#                   python3-apt (>=1.6.5),
+#                   Required for bash auto completion
+                    python3-argcomplete,
+#                   Required for GTK3 Python Library; usually preinstalled
+                    python3-gi (>=3.26.1),
+#                   Required for sorting alphabetically
+                    python3-icu (>=1.9.8),
+#                   Required for magic
+                    python3-magic (>=2:0.4.15),
+#                   Required for packaging.version
+                    python3-packaging (>=17.1),
+#                   Required for pexpect
+                    python3-pexpect (>=4.2.1),
+#                   Required to get system memory information
+                    python3-psutil (>=5.4.2-1),
+#                   Required for pydbus
+                    python3-pydbus (>=0.6.0),
+#                   Required for Gtk 3; usually preinstalled
+                    python3-pyinotify (>=0.9.6),
+#                   Required for QEMU GTK zoom to fit for Ubuntu > 18.04 LTS
+                    python3-yaml (>=3.12),
+#                   Required to update yaml; usually preinstalled
+                    qemu-system-gui (>=1:4.2) | qemu-system-x86 (<<1:4.2),
+#                   Required for qemu-system-x86_64
+                    qemu-system-x86 (>=1:4.2) | qemu-system-x86 (<<1:4.2),
+#                   Required for rsync; usually preinstalled
+                    rsync (>=3.1.2),
+#                   Required for mksquashfs, unsquashfs
+                    squashfs-tools (>=1:4.3),
+#                   Required for systemd-nspawn
+                    systemd-container (>=237),
+#                   Required for xorriso
+                    xorriso (>=1.4.8)
+Recommends:
+#                   N/A
+Description: Wizard to create a customized Ubuntu Live ISO image.
+  Cubic (Custom Ubuntu ISO Creator) is a GUI wizard to create a customized
+  Live ISO image for Ubuntu and Debian based distributions. Cubic permits
+  effortless navigation through the ISO customization steps and features an
+  integrated virtual command line environment to customize the Linux file
+  system. You can create new customization projects or modify existing projects.
+  Important parameters are dynamically populated with intelligent defaults to
+  simplify the customization process. See https://github.com/PJ-Singh-001/Cubic
+  for more information.

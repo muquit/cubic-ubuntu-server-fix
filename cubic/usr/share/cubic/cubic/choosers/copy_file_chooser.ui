@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+  copy_file_chooser.ui
+
+  Copyright (C) 2020 PJ Singh <psingh.cubic@gmail.com>
+
+-->
+<!--
+
+  This file is part of Cubic - Custom Ubuntu ISO Creator.
+
+  Cubic is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Cubic is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Cubic. If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<interface>
+  <requires lib="gtk+" version="3.22"/>
+  <object class="GtkFileChooserDialog" id="copy_file_chooser">
+    <!-- Resolve Gtk-WARNING: Content added to the action area of a dialog using header bars. -->
+    <property name="use-header-bar">0</property>
+    <property name="width-request">600</property>
+    <property name="height-request">600</property>
+    <property name="can-focus">False</property>
+    <property name="modal">True</property>
+    <property name="window-position">center-on-parent</property>
+    <property name="destroy-with-parent">True</property>
+    <property name="type-hint">dialog</property>
+    <property name="gravity">center</property>
+    <property name="create-folders">False</property>
+    <property name="select-multiple">True</property>
+    <signal name="delete-event" handler="on_delete_event__copy_file_chooser" swapped="no"/>
+    <signal name="file-activated" handler="on_file_activated__copy_file_chooser" swapped="no"/>
+    <signal name="selection-changed" handler="on_selection_changed__copy_file_chooser" swapped="no"/>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="copy_file_chooser__header_bar">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="title">Cubic - Select Files to Copy</property>
+        <property name="spacing">18</property>
+        <signal name="map" handler="on_map__copy_file_chooser__header_bar" swapped="no"/>
+        <child>
+          <object class="GtkButton" id="copy_file_chooser__cancel_button_1">
+            <property name="label" translatable="yes">Cancel</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <signal name="clicked" handler="on_clicked__copy_file_chooser__cancel_button" swapped="no"/>
+            <style>
+              <class name="destructive-action"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="copy_file_chooser__select_button_1">
+            <property name="label" translatable="yes">Select</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="image-position">right</property>
+            <signal name="clicked" handler="on_clicked__copy_file_chooser__select_button" swapped="no"/>
+            <style>
+              <class name="suggested-action"/>
+            </style>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="copy_file_chooser__box">
+        <property name="can-focus">False</property>
+        <property name="orientation">vertical</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="copy_file_chooser__button_box">
+            <property name="can-focus">False</property>
+            <child>
+              <object class="GtkButton" id="copy_file_chooser__cancel_button_2">
+                <property name="label" translatable="yes">Cancel</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <signal name="clicked" handler="on_clicked__copy_file_chooser__cancel_button" swapped="no"/>
+                <style>
+                  <class name="destructive-action"/>
+                </style>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="copy_file_chooser__select_button_2">
+                <property name="label" translatable="yes">Select</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="image-position">right</property>
+                <signal name="clicked" handler="on_clicked__copy_file_chooser__select_button" swapped="no"/>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

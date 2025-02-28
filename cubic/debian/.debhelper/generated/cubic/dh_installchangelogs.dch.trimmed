@@ -1,0 +1,568 @@
+cubic (2024.09) bionic focal groovy hirsute impish jammy kinetic lunar mantic noble oracular; urgency=low
+
+  * Issues fixed in version 2024.09-89:
+
+  - Fixed Bug GH:#341, Cubic can't extract files from original disk. Updated the
+    extract-root command to ignore non-fatal exit status 2.
+  - Fixed Bug GH:#282 "Close" button in the About dialog doesn't work. Reuse the
+    on_close_about_dialog handler for the About dialog's response signal.
+  - Fixed Bug GH:#340, Invalid escape sequence syntax warnings are displayed
+    when installing or running Cubic.
+  - Fixed Bug GH:#344, Gtk-WARNING Content added to the action area of a dialog
+    using header bars. Added <property name="use-header-bar">0</property> to
+    file choosers.
+
+  * Issues fixed in version 2024.09-88:
+
+  - Fixed Bug GH:#337, Cubic doesn't open after last update on 09/02/2024.
+    The function str.removesuffix() is only available in Python 3.9.
+    (https://docs.python.org/3/library/stdtypes.html#str.removesuffix)
+
+  * Issues fixed in version 2024.09-87:
+
+  - With this release, users can see their changes in the Live environment, and
+    the same changes will be reflected in the installed system. Previously, the
+    Live environment did not reflect all of the user's customizations.
+  - Enhanced support for versions of Ubuntu that use the Subiquity installer
+    with a layered file system (Ubuntu Server 21.10 and newer, Ubuntu Desktop
+    23.04 and newer). Continue to support older versions of Ubuntu that use the
+    Ubiquity installer (Ubuntu Server 21.04 and older, Ubuntu Desktop 22.10 and
+    older).
+  - Combine the standard and minimal layered squashfs file systems into a single
+    file system that can be customized on the Terminal page.
+  - Extract both standard squashfs and tminimal squashfs when both files are
+    present (Ubuntu Server 21.10 and newer, Ubuntu Desktop 23.04 and newer).
+  - Updated the progress bar on the Extract page to show the extract process for
+    multiple squashfs file systems, if present. Display the progress in tenths
+    of a percent.
+  - When copying important files from the original disk on the Extract page: do
+    not copy "*.squashfs" files; do not copy "*.manifest" files; do not copy
+    "*.size" files; do not copy "*.gpg" files; do not copy minimal squashfs
+    files. Copy manifest remove files. Copy manifest minimal remove files; do
+    not copy secureboot squashfs files; do not copy language related files.
+  - Updated the "Analyze the original disk image" section on the Extract page to
+    analyze the layout of the original ISO.
+  - Identify the casper directory by checking for the presence of predefined
+    initrd and vmlinuz files in predefined directories, instead of searching for
+    a location containing "vmlinuz" and "initrd.*" files. The possible
+    directories and file names are predefined in the model module.
+  - Identify the squashfs directory by checking for the presence of predefined
+    squashfs files in predefined directories, instead of searching for a
+    location containing "*.squashfs" files. The possible directories and file
+    names are predefined in the model module.
+  - Updated the project configuration file (cubic.conf) layout. Added the Layout
+    section to represent the structure of the ISO file. Simplified the Status
+    section. Removed the Installer section; moved the has_minimal_install field
+    to the Options section.
+  - Removed support for migrating a project from Cubic Classic.
+  - Added ability to migrate a project from Cubic 2024.02-86 to 2024.07-87.
+  - Removed ability to load configuration files from projects created with
+    Cubic versions prior to 2024.02-86.
+  - Updated how file system size is calculated; file system size is now the sum
+    of the standard file system size and the installer file system size.
+  - Create links from minimal file system files (such as "*.squashfs",
+    "*.manifest", and "*.size") to the standard file system files.
+  - Added a note on the Test pages that Ctrl-Alt-F my be used to toggle full
+    screen when using the QEMU emulator.
+  - Renamed "Typical" install to "Standard" install on the Prepare page and the
+    Packages page to align with Ubuntu's terminology. Update code comments and
+    variable names accordingly.
+  - Renamed the "fields" module to "structures", and added the Attributes class
+    (to support ISO Layouts).
+  - Added ISO layout attributes to the model.
+  - Set filesystem size file name to "filesystem.size" if it is not available on
+    the original ISO, on the Extract page.
+  - Set standard manifest file name to "filesystem.manifest" if it is not
+    available on the original ISO, on the Extract page.
+  - Added workaround for Pop!_OS. The casper directory must be an unusual
+    directory (such as "casper_pop-os_20.04_amd64_intel_debug_25"), while the
+    squashfs (boot=) must be "casper".
+  - Tested Debian, Elementary OS, GRML, Kali, Neon, Pop!_OS, Ubuntu Desktop,
+    Ubuntu Server.
+  - Save the cubic.conf project configuration file when leaving the Project
+    page, Extract page, Packages page, Options page and Compression page. (This
+    reverts enhancement GH:#171, Minimize the number of times the cubic.conf
+    project configuration file is saved).
+  - Added is_success_analyze to the cubic.conf project configuration.
+  - Eliminated the Migrate page, since this was used for migrating from the
+    Classic version of Cubic.
+  - Added the Alert page to notify the user if a project was created using a
+    previous version of Cubic.
+  - Added create_link() function to the file_utilities module.
+  - Generate "minimal.standard.manifest" and create a link named
+    "minimal.manifest" to this file.
+  - Generate "minimal.standard.squashfs" and create a link named
+    "minimal.squashfs" to this file.
+  - Generate "minimal.standard.size" and create a link named "minimal.size" to
+    this file.
+  - Automatically update install-sources.yaml. Make the minimal install the
+    default because the installer crashes if standard install is used. Remove
+    languages and locale support. Update the description, id, name, and size.
+  - Added python3-yaml (>=3.12) as a required dependency to update yaml files.
+    Version 3.12 of python3-yaml was included with Bionic Beaver 18.04.
+  - Updated the extract-root command to extract into an existing destination, to
+    allow Cubic to extract and customize layered file systems.
+  - Added a General section to the ISO layout to improve support for legacy
+    layouts. Improved the Extract page and the Generate page.
+  - Use pattern matching to identify directories and files, when analyzing the
+    ISO layout on the Extract page, to support distros such as Pop!_OS that
+    require unusual casper directory names.
+  - Changed the way original files are copied on the Extract page, to only copy
+    specified files in the casper and squashfs directories. Previously, all
+    files in the casper and squashfs directories were copied, and specified
+    files were explicitly excluded.
+  - Documented the "-l" and "--log" command line arguments in Cubic's man page.
+  - Excluded install-sources.yaml.original from the md5sum.txt file.
+
+  * Issues fixed in version 2024.02-86:
+
+  - Fixed Bug GH:#289, Unable to calculate checksum. Skip symlinks while
+    calculating checksums.
+
+  * Issues fixed in version 2023.12-85:
+
+  - Fixed Bug GH:#273, Incorrect parsing of os-release file. Ignore comment
+    lines in os-release file.
+  - Fixed Bug GH:#277, Cubic gets stuck at 50% during "Copy Selected Boot Kernel
+    files to the disk". Ignore comment blank lines in os-release file.
+
+  * Issues fixed in version 2023.09-84:
+
+  - Enhancement GH:#261, Add a --log command line option to Cubic.
+
+  * Issues fixed in version 2023.05-83:
+
+  - Fixed Bug GH:#213, Cubic removes "filesystem.manifest-remove" from the
+    generated ISO [Elementary OS]. Instead of checking the Ubiquity version, use
+    the presence of "filesystem.manifest-remove" to determine if the Packages
+    page should be shown. Updated the "cubic.conf" file layout, and added the
+    "Installer" section with "has_typical_install", "has_minimal_install", and
+    "has_subiquity" keys. Removed "is_subiquity" from the "Options" section.
+  - Updated the configuration layout versions. Revised the end version for
+    CUBIC_VERSION_2022 from 2023.02-75 to 2023.05.82. Revised the start version
+    for CUBIC_VERSION_2023 from 2023.03.76 to 2023.05.83.
+  - Fixed regression to Enhancement GH:#143, Please stop creating
+    "filesystem.manifest-minimal-remove". A bug introduced in version 2023.03-77
+    caused the "filesystem.manifest-minimal-remove" file to always be copied to
+    the new ISO.
+  - Fixed a bug in the __setattr__() method of the Fields class (fields.py) that
+    caused boolean False values to be stored as blank strings.
+  - On the Packages page, renamed the install type from "Typical" to "Standard".
+
+  * Issues fixed in version 2023.05-82:
+
+  - Updated Cubic to require GKT 3.22 or above, because Ubuntu 18.04.5 Bionic
+    Beaver, which is the lowest version of Ubuntu that Cubic runs on, also uses
+    GKT 3.22. Previously, Cubic required GTK 3.20 or above.
+  - Updated all widget property names to use dashes ("-") instead of underscores
+    ("_"), to align with published GTK 3 property names. For example, properties
+    such as "can_focus", "icon_name", "left_attach", and "top_attach" were
+    renamed to "can-focus", "icon-name", "left-attach", and "top-attach",
+    respectively. This will standardize the Cubic code base and establish a
+    baseline for migrating to GTK 4.
+
+  * Issues fixed in version 2023.04-81:
+
+  - Error parsing "/etc/os-release" when values contain "=" symbols.
+
+  * Issues fixed in version 2023.04-80:
+
+  - Fixed Bug GH:#145, Selecting LZMA compression causes the ISO to not boot.
+    Removed the LZMA option from the Compression page. Added rounded corners to
+    the grid.
+  - Added sh as a text/plain extension in /usr/share/cubic/assets/mime.types.
+  - Added builds for ARM ARMv8 (arm64), ARM ARMv7 Hard Float (armhf), Intel x86
+    (i386), PowerPC (powerpc), PowerPC64 Little-Endian (ppc64el), and IBM System
+    z (s390x), in addition to the current build for AMD x86-64 (amd64).
+
+  * Issues fixed in version 2023.03-79:
+
+  - Fixed Bug GH:#172, Error "No root device specified" when booting customized
+    Ubuntu 23.04 daily.
+
+  * Issues fixed in version 2023.03-78:
+
+  - Fixed Bug GH:#172, Add additional support for Ubuntu 23.04 Lunar Lobster.
+
+  * Issues fixed in version 2023.03-77:
+
+  - Fixed Bug GH:#151, Extract Ubuntu 23.04 (Lunar) ISO image fails.
+
+  * Issues fixed in version 2023.03-76:
+
+  - Enhancement GH:#143, Please stop creating
+    "filesystem.manifest-minimal-remove".
+  - Fixed Bug GH:#167, The compression algorithm resets to "gzip" after clicking
+    back to the Project page.
+  - Enhancement GH:#171, Minimize the number of times the cubic.conf project
+    configuration file is saved.
+  - Fixed issue where the required boot configurations (i.e. the filtered list
+    of boot configuration files) were not updated in the project configuration
+    file, if the user quit Cubic while on the Boot Copy page.
+  - Fixed logger output background colors for yellow titles and green labels.
+
+  * Issues fixed in version 2023.02-75:
+
+  - Improved the file_utilities.find_files_with_pattern() function.
+  - Corrected the license for usr/share/bash-completion/cubic from GPL 3.0 to
+    Apache 2.0.
+  - Changed table heading from "Boot Files" to "Kernel Files" on the Options
+    page, Kernel tab.
+  - Updated notes on the Options page, Kernel tab to indicate which kernel files
+    are from the custom Linux file system's /boot directory.
+  - Use the system error color to display error message(s) on the following
+    pages: Boot Copy page, Boot tab, Delete page, Extract page, Generate page,
+    Migrate page, Prepare page, Preseed Copy page, Preseed Tab, Project page,
+    Start page, Terminal Copy page, Terminal page, Test 1 page, and Test 2 page.
+  - Differentiated file and directory error messages on the Boot tab and the
+    Preseed tab.
+
+  * Issues fixed in version 2022.12-74:
+
+  - Fixed Bug GH:#130, Error "invalid file name 'boot=casper'" when booting from
+    an ISO created with Cubic version 2022.11.73.
+  - Enhancement GH:#133, Highlight automatic changes to the boot configuration
+    files.
+  - Enhancement GH:#129, Include Debian in the Cubic man page description and
+    command line help.
+  - Enhancement GH:#119, Open the file chooser to the previously used *.iso file
+    when selecting an original ISO for new projects. Includes fix to pre-select
+    directories.
+  - Remove "grml64-full.squashfs" from the predefined list of "squashfs" files
+    in the constants module. See Enhancement GH:#93, Add support for Grml Live
+    Linux.
+  - Revise file_utilities.find_files_with_pattern() to traverse symlinks to
+    support Pop_OS! which uses a symlink named "casper" for the *.squashfs
+    directory.
+
+  * Issues fixed in version 2022.11-73:
+
+  - Improve text search and replace in boot files.
+  - Update file choosers to open the home directory if a file or directory does
+    not exist.
+  - Automatically identify boot files; remove the list of distro specific boot
+    files in the constants module.
+  - Enhancement GH:#114, Add support for Debian.
+  - Enhancement GH:#93, Add support for Grml Live Linux.
+  - Enhancement GH:#116, Do not show the Test button on the Project page and the
+    Finish page if the dummy Qemu package (qemu-system-x86 version 0.0) has been
+    installed.
+  - Enhancement GH:#121, Add auto completion for Cubic command line arguments.
+    Add file "/usr/share/bash-completion/completions/cubic". Require package
+    "python3-argcomplete".
+  - Enhancement GH:#117, Format the output of the "cubic --version" command.
+  - Enhancement GH:#118, Remove "New" and "★" in the headerbar and menu items.
+  - Enhancement GH:#119, Open the file chooser to the previously used *.iso file
+    when selecting an original ISO for new projects.
+  - Enhancement GH:#120, Introduce an application specific configuration file
+    "~/.config/cubic/cubic.conf". Updated the configuration module: add the
+    Configuration base class, the Application derived class, and the Project
+    derived class.
+
+  * Issues fixed in version 2022.06-72:
+
+  - Fixed Bug GH:#74, No longer able to query installed software when running
+    Cubic in Ubuntu 18.04.5 thru 20.04. Use "dpkg-query --admindir" instead of
+    "dpkg-query --root".
+
+  * Issues fixed in version 2022.06-71:
+
+  - Fixed Bug GH:#30, Permission denied error after customization of image is
+    complete. Reverted to using dpkg-query, instead of apt.Cache, to retrieve
+    package versions and the list of installed packages.
+
+  * Issues fixed in version 2022.01-70:
+
+  - Fixed Bug GH:#19, Unable to locate the squashfs file during customization of
+    Ubuntu Server.
+
+  * Issues fixed in version 2022.01-69:
+
+  - Fixed Enhancement GH:#13, Open new Cubic instance with project folder
+    pre-selected.
+  - Added support for command line arguments, and added the following optional
+    command line arguments:
+      directory      directory for a new or existing project
+      iso            original ISO file for a new project
+      -h, --help     show this help message and exit
+      -v, --verbose  output formatted log to the console
+      -V, --version  print version information and exit
+  - Updated the man page to include command line argument instructions.
+  - Made logging optional; logging is now off by default.
+
+  * Issues fixed in version 2021.12-68:
+
+  - Fixed Bug GH:#5, Unable to proceed after bash(chroot) step when project
+    directory contains nn.nn.n-n format.
+
+  - Fixed Bug GH:#2, Popup Menu and About Dialog warning instance 'XXXXXXXXX'
+    has no handler with id 'XXXXX'.
+
+  - Improved processor module to accept a list of arguments for spawned commands
+    that require arguments.
+
+  - Added code comments to various modules.
+
+  * Issues fixed in version 2021.12-67:
+
+  - Fixed Bug GH:#1, Migrate the Cubic website from Launchpad to GitHub. (See
+    GitHub https://github.com/PJ-Singh-001/Cubic/issues/1).
+
+  * Issues fixed in version 2021.12-66:
+
+  - Fixed Bug LP:#1954558, On the Preseed and Boot tabs, make new files with the
+    *.sh extension executable.
+
+  * Issues fixed in version 2021.12-65:
+
+  - Fixed Bug LP:#1954444, Unable to write to file error on typical removable
+    packages page.
+
+  * Issues fixed in version 2021.12-64:
+
+  - Improved the progressor module and removed the ProgressTracker thread class.
+  - Fixed Bug LP:#1953635, Copying numerous small files is slow.
+  - Consolidated file read and write operations to the file_utilities module.
+  - Fixed Bug LP:#1951662, On the Copy pages, pause to allow the user to view
+    the results before automatically transitioning away from the page.
+  - Fixed Bug LP:#1951693, On the Copy pages, clicking the Cancel button may be
+    unresponsive.
+  - Fixed Bug LP:#1951695, Show error status on the Copy pages.
+  - Fixed Bug LP:#1951715, On the Generate page, clicking the Back button during
+    update check sums may be unresponsive.
+  - Fixed Bug LP:#1952816, Double click or press Enter to select a file in the
+    file choosers.
+
+  * Issues fixed in version 2021.11-63:
+
+  - Fixed Bug LP:#1952680, Cannot install Cubic in Linux Mint 19.x.
+
+  * Issues fixed in version 2021.11-62:
+
+  - Fixed Bug LP:#1949237, Can not customize Ubuntu Server 21.10 using Cubic.
+    Automatically determine if "ubuntu-server-minimal.squashfs" or
+    "filesystem.squashfs" should be extracted. Added "squashfs_file_name"
+    parameter to the "cubic.conf" file.
+  - Fixed Bug LP:#1950865, The Packages page should only be shown if Ubiquity is
+    installed. Added logic to bypass the Packages page if Ubiquity is not
+    installed, and added logic to display the minimal install check boxes on the
+    Packages page if the version of Ubiquity is >= 18.04. Added python3-apt
+    (>=1.6.5) and python3-packaging (>=17.1) as required dependencies.
+  - Fixed Bug LP:#1950923, The Release name is not correct in Ubuntu 21.04+. Use
+    ".disk/info" to determine the Release name.
+  - Fixed Bug LP:#1951001, Display numbers in localized format. Introduced
+    Python f-strings to format all strings in Cubic.
+  - Fixed Bug LP:#1951170, The Finish page does not show the ISO size.
+  - Fixed Bug LP:#1951171, Show the memory used for testing on the Test pages.
+  - Preformed code refactoring and code clean up.
+
+  * Issues fixed in version 2021.10-61:
+
+  - Fixed Bug LP:#1947060, The "OS Release" check box on the Project page does
+    not show an error when the "Volume ID" field is blank.
+  - Fixed Bug LP:#1947212, ValueError when selecting an invalid directory from
+    the previous projects list on the Start page.
+  - Refactored code for previously fixed Bug LP:#1946670.
+  - Shortened the release description.
+  - Center Cubic window upon launch.
+
+  * Issues fixed in version 2021.10-60:
+
+  - Fixed Bug LP:#1946670, Add ability to select an existing project on the
+    Start page.
+
+  * Issues fixed in version 2021.10-59:
+
+  - Fixed Bug LP:#1946552, Wrap text in editor and current line not visible
+    while using dark theme.
+  - Replaced slide transitions for Test pages with cross-fade transitions.
+
+  * Issues fixed in version 2021.10-58:
+
+  - Fixed Bug LP:#1945244, QEMU window does no open on Ubuntu 21.04 when Test
+    button is clicked. Update dependencies to require qemu-system-x86 for all
+    Ubuntu versions. Update dependencies to require qemu-system-gui for Ubuntu
+    versions > 18.04 Bionic.
+    Ubuntu 18.04 Bionic:
+    - Require qemu-system-x86 1:2.11
+    - qemu-system-gui is not available and is not required for zoom to fit
+    Ubuntu 20.04 Focal:
+    - Require qemu-system-x86 1:4.2
+    - Require qemu-system-gui 1:4.2; does not depend on qemu-system-x86
+    Ubuntu 20.10 Groovy (unsupported, so there is no Cubic build for 20.10)
+    - Require qemu-system-x86 1:5.0
+    - Require qemu-system-gui 1:5.0; does not depend on qemu-system-x86
+    Ubuntu 21.04 Hirsute:
+    - Require qemu-system-x86 1:5.2
+    - Require qemu-system-gui 1:5.2; depends on qemu-system-x86
+    Ubuntu 21.10 Impish:
+    - Require qemu-system-x86 1:6.0
+    - Require qemu-system-gui 1:6.0; depends on qemu-system-x86
+
+  * Issues fixed in version 2021.09-57:
+
+  - Fixed Bug LP:#1945071, Unable to test the generated disk image on Ubuntu
+    18.04 Bionic Beaver.
+
+  * Issues fixed in version 2021.09-56:
+
+  - Fixed Bug LP:#1944062, Add capability to test generated ISO. Added a Test
+    button on the Project page and a Test button on the Finish page. Added a new
+    emulator module and two new Test pages to Cubic. Made the transition from
+    the Generate page to the Finish page automatic. Added python3-psutil and
+    qemu-system-x86 as dependencies to install Cubic. Updated the Cubic help
+    pages at https://answers.launchpad.net/cubic/+faqs. Added Test page
+    instructions. Updated the help pages for the Project page, the Generate
+    page, and the Finish page to include instructions for the new testing
+    capability. Updated links for Cubic's "Help on this page" application menu
+    items accordingly.
+  - Fixed Bug #1944063, Prohibit the user from creating a Cubic project on a
+    remote file system.
+  - Fixed issue where header bar buttons appear before the page contents when
+    navigating to certain pages, such as the Project page.
+
+  * Issues fixed in version 2021.09-55:
+
+  - Fixed Bug LP:#1944049, The user can select an NTFS directory as the Project
+    directory, even though Linux can not be customized on an NTFS partition.
+
+  * Issues fixed in version 2021.09-54:
+
+  - Fixed Bug LP:#1943613, Error when selecting "isolinux" on the Boot tab while
+    customizing Xubuntu.
+  - Fixed Bug LP:#1943669, User can click the File Chooser Select button without
+    selecting any items.
+
+  * Issues fixed in version 2021.09-53:
+
+  - Fixed Bug LP:#1943054 Additional packages are installed with a minimal
+    installation when creating a custom installation with Cubic.
+  - Fixed Bug LP:#1943333 If there is an error on the Delete page, the user is
+    unable to click the Cancel button.
+  - Fixed Bug LP:#1943335 Local variable 'percent' referenced before assignment
+    error.
+
+  * Issues fixed in version 2021.06-52:
+
+  - Fixed Bug LP:#1930934, Error creating disk image when there is an apostrophe
+    character (') in the project directory path.
+
+  * Issues fixed in version 2021.05-51:
+
+  - Minor code refactoring on the Terminal page.
+
+  * Issues fixed in version 2021.04-50:
+
+  - Fixed Bug LP:#1925091, Unable to resolve DNS in Hirsute. This bug occurs on
+    any version of Ubuntu where the /etc/resolv.conf file on the host system is
+    not a symlink (usually pointing to /run/systemd/resolve/stub-resolv.conf).
+
+  * Issues fixed in version 2021.04-49:
+
+  - Fixed Bug LP:#1924784, The Release URL is not saved for the custom ISO.
+
+  * Issues fixed in version 2021.04-48:
+
+  - Fixed Bug LP:#1922407, UnboundLocalError after copying files on the Boot
+    tab.
+  - Fixed Bug LP:#1922147, Cubic hangs on the Prepare page if the original ISO
+    is not available.
+
+  * Issues fixed in version 2021.03-47:
+
+  - Fixed Bug LP:#1921961, The file choosers' side pane lists the installation
+    directory "cubic" (/usr/share/cubic) as favorite location.
+
+  * Issues fixed in version 2021.03-46:
+
+  - Fixed Bug LP:#1918741, Drag and drop text onto terminal doesn't work.
+  - Improved stability when transitioning from the Prepare page to the Options
+    page.
+  - Fixed issue on the Prepare page and the Generate page where status text
+    shifts vertically by a few pixels when updated.
+
+  * Issues fixed in version 2021.03-45:
+
+  - Fixed Bug LP:#1918067, On the Boot tab, modified unfiltered files are not
+    visible in the filtered files list.
+  - Improved tree performance when the show all files button is toggled
+    on the Boot tab.
+  - Fixed Bug LP:#1918072, On the Preseed tab and the Boot tab, show the name of
+    the file being edited.
+  - Fixed Bug LP:#1918543, On the Boot Tab, some icons are incorrect for
+    unfiltered files.
+  - Added additional mime types in order to correctly identify icons for
+    files on the Preseed tab and Boot tab.
+  - Simplified the instructions on the Extract page, Prepare page, Packages
+    page, Options page, Preseed tab, and Boot tab.
+
+  * Issues fixed in version 2021.03-44:
+
+  - Fixed Bug LP:#1916396, AttributeError: module 'logger' has no attribute
+    'log_title'. Refactored the application to use a unique package structure in
+    order to avoid name collisions.
+
+  * Issues fixed in version 2021.03-43:
+
+  - Fixed Bug LP:#1916257, Terminal doesn't support keyboard shortcut for copy
+    & paste. Added the following shortcuts: Ctrl+Shift+A for select all,
+    Ctrl+Shift+C for copy, and Ctrl+Shift+V for paste.
+  - Fixed Bug LP:#1917927, Error on the Prepare page when deleting files in
+    /var/tmp/.
+
+  * Issues fixed in version 2021.01-42:
+
+  - Fixed Bug LP:#1913652, Display the Cubic version in the About Dialog.
+  - Fixed Bug LP:#1913636, Make Cubic work with Feren OS. Explicitly assign
+    read permissions (744 and 644) to all directories and files copied from
+    the original ISO, to remedy files with incorrect permissions.
+  - Fixed Bug LP:#1913005, Unable to open the file browser on the Migrate
+    page, Delete page, or Finish page when the file path contains spaces.
+  - Select the file when it is opened in the default browser. Previously this
+    only worked in Nautilus, while other file browsers simply opened the
+    file's parent directory without selecting the file.
+  - Delete temporary files created in /var/tmp while analyzing the initrd
+    files to determine their kernel versions.
+  - On the Prepare page, when displaying the total number of packages to be
+    removed for a minimal install, include the number of packages to be removed
+    for a typical install.
+
+  * Issues fixed in version 2021.01-41:
+
+  - Fixed Bug LP:#1911469, Stuck at "Update the disk name" when generating
+    disk image. The date and time format is now explicitly set to YYYY-MM-DD
+    HH:MM because localized formats are ambiguous.
+
+  * Issues fixed in version 2021.01-40:
+
+  - Fixed Bug LP:#1910408, Cubic appends characters to /etc/os-release and
+    /etc/lsb-release breaking the new automated installation method for
+    Ubuntu. (Also reference Bug LP:#1907873).
+
+  * Issues fixed in version 2021.01-39:
+
+  - Fixed Bug LP:#1909600, Terminal page right-click "Paste file" context menu
+    option is not working.
+
+  * Issues fixed in version 2020.12-38:
+
+  - Fixed Bug LP:#1909402, The Volume ID is not applied to the generated ISO.
+  - Fixed Bug LP:#1909414, During ISO boot, check disk reports error in 1
+    file.
+
+  * Issues fixed in version 2020.12-37:
+
+  - Fixed Bug LP:#1908879, Cubic v2020.12.36 crash on startup.
+  - Fixed Bug LP:#1908849, Generate step fails if the Cubic project directory
+    path contains spaces.
+
+  * Issues fixed in version 2020.12-36:
+
+  - Fixed Bug LP:#1905098, Failed to generate ISO for Ubuntu 20.10.
+  - Fixed Bug LP:#1853914, Request: Ability to add a whole folder directly
+    into preseed.
+  - Fixed Bug LP:#1907873, Make version information available in the
+    customized OS.
+  - Merged from Experimental branch, revision 19
+
+ -- PJ Singh <psingh.cubic@gmail.com>  Fri, 06 Sep 2024 18:07:25 -0400

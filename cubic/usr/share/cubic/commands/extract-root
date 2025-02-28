@@ -1,0 +1,77 @@
+#!/bin/bash
+
+########################################################################
+#                                                                      #
+# extract-root                                                         #
+#                                                                      #
+# Copyright (C) 2020 PJ Singh <psingh.cubic@gmail.com>                 #
+#                                                                      #
+########################################################################
+
+########################################################################
+#                                                                      #
+# This file is part of Cubic - Custom Ubuntu ISO Creator.              #
+#                                                                      #
+# Cubic is free software: you can redistribute it and/or modify        #
+# it under the terms of the GNU General Public License as published by #
+# the Free Software Foundation, either version 3 of the License, or    #
+# (at your option) any later version.                                  #
+#                                                                      #
+# Cubic is distributed in the hope that it will be useful,             #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of       #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the         #
+# GNU General Public License for more details.                         #
+#                                                                      #
+# You should have received a copy of the GNU General Public License    #
+# along with Cubic. If not, see <http://www.gnu.org/licenses/>.        #
+#                                                                      #
+########################################################################
+
+# Extract the root file system for Cubic.
+
+########################################################################
+# Arguments
+########################################################################
+
+program=${0}
+number_arguments=${#}
+target_file_path=${1}
+source_file_path=${2}
+
+# echo "program..................... ${program}"
+# echo "number of arguments......... ${number_arguments}"
+# echo "target file path............ ${target_file_path}"
+# echo "source file path............ ${source_file_path}"
+
+########################################################################
+# Command
+########################################################################
+
+# Exit Status Codes
+# https://manpages.ubuntu.com/manpages/noble/man1/unsquashfs.1.html
+#
+# 0 The filesystem listed or extracted OK.
+# 1 FATAL errors occurred, e.g. filesystem corruption, I/O errors.
+#   Unsquashfs did not continue and aborted.
+# 2 Non-fatal errors occurred, e.g. no support for XATTRs, Symbolic
+#   links in output filesystem or couldn't write permissions to
+#   output filesystem. Unsquashfs continued and did not abort.
+# See -ignore-errors, -strict-errors and -no-exit-code options for
+# how they affect the exit status.
+
+# Version 1:4.4 of unsquashfs, available in Ubuntu 20.04 LTS Focal Fossa, does
+# not support the "-no-exit-code" option.
+# unsquashfs -force -no-exit-code -dest "${target_file_path}" "${source_file_path}"
+
+unsquashfs -force -dest "${target_file_path}" "${source_file_path}"
+
+# Use echo $? to check the error status.
+# http://www.tldp.org/LDP/abs/html/exitcodes.html
+
+# Ignore non-fatal errors.
+exit_code=$?
+if [[ $exit_code -eq 2 ]]; then
+    echo "Ignoring non-fatal errors."
+    exit_code=0
+fi
+exit $exit_code

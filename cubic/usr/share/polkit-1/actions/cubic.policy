@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN" "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+  <action id="compress-root">
+    <description>Compress the root file system for Cubic.</description>
+    <message>Enter the administrator password to compress the root file system for Cubic.</message>
+    <icon_name>cubic</icon_name>
+    <defaults>
+      <!-- auth_admin or yes -->
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/share/cubic/commands/compress-root</annotate>
+  </action>
+  <action id="copy-path">
+    <description>Copy a file or directory for Cubic.</description>
+    <message>Enter the administrator password to copy a file or directory for Cubic.</message>
+    <icon_name>cubic</icon_name>
+    <defaults>
+      <!-- auth_admin or yes -->
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/share/cubic/commands/copy-path</annotate>
+  </action>
+  <action id="current-directory">
+    <description>Get the virtual environment current directory for Cubic.</description>
+    <message>Enter the administrator password to get the virtual environment current directory for Cubic.</message>
+    <icon_name>cubic</icon_name>
+    <defaults>
+      <!-- auth_admin or yes -->
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/share/cubic/commands/current-directory</annotate>
+  </action>
+  <action id="delete">
+    <description>Delete a file or directory for Cubic.</description>
+    <message>Enter the administrator password to delete a file or directory for Cubic.</message>
+    <icon_name>cubic</icon_name>
+    <defaults>
+      <!-- auth_admin or yes -->
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/share/cubic/commands/delete-path</annotate>
+  </action>
+  <action id="directory-usage">
+    <description>Get directory usage (used, available, and used %) in bytes for Cubic.</description>
+    <message>Enter the administrator password to get directory usage (used, available, and used %) in bytes for Cubic.</message>
+    <icon_name>cubic</icon_name>
+    <defaults>
+      <!-- auth_admin or yes -->
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/share/cubic/commands/directory-usage</annotate>
+  </action>
+  <action id="extract-root">
+    <description>Extract the root file system for Cubic.</description>
+    <message>Enter the administrator password to extract the root file system for Cubic.</message>
+    <icon_name>cubic</icon_name>
+    <defaults>
+      <!-- auth_admin or yes -->
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/share/cubic/commands/extract-root</annotate>
+  </action>
+  <action id="file-size">
+    <description>Get the size of a file or directory in bytes for Cubic.</description>
+    <message>Enter the administrator password to get the size of a file or directory in bytes for Cubic.</message>
+    <icon_name>cubic</icon_name>
+    <defaults>
+      <!-- auth_admin or yes -->
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/share/cubic/commands/file-size</annotate>
+  </action>
+  <action id="mount-iso">
+    <description>Mount an ISO for Cubic.</description>
+    <message>Enter the administrator password to mount an ISO for Cubic.</message>
+    <icon_name>cubic</icon_name>
+    <defaults>
+      <!-- auth_admin or yes -->
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/share/cubic/commands/mount-iso</annotate>
+  </action>
+  <action id="move-path">
+    <description>Move a file or directory for Cubic.</description>
+    <message>Enter the administrator password to move a file or directory for Cubic.</message>
+    <icon_name>cubic</icon_name>
+    <defaults>
+      <!-- auth_admin or yes -->
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/share/cubic/commands/move-path</annotate>
+  </action>
+  <action id="replace-text">
+    <description>Replace text in a file for Cubic.</description>
+    <message>Enter the administrator password to replace text in a file for Cubic.</message>
+    <icon_name>cubic</icon_name>
+    <defaults>
+      <!-- auth_admin or yes -->
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/share/cubic/commands/replace-text</annotate>
+  </action>
+  <action id="start-console">
+    <description>Start the virtual environment for Cubic.</description>
+    <message>Enter the administrator password to start the virtual environment for Cubic.</message>
+    <icon_name>cubic</icon_name>
+    <defaults>
+      <!-- auth_admin or yes -->
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/share/cubic/commands/start-console</annotate>
+  </action>
+  <action id="stop-console">
+    <description>Stop the virtual environment for Cubic.</description>
+    <message>Enter the administrator password to stop the virtual environment for Cubic.</message>
+    <icon_name>cubic</icon_name>
+    <defaults>
+      <!-- auth_admin or yes -->
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/share/cubic/commands/stop-console</annotate>
+  </action>
+  <action id="stop-process">
+    <description>Terminate a process for Cubic.</description>
+    <message>Enter the administrator password to terminate a process for Cubic.</message>
+    <icon_name>cubic</icon_name>
+    <defaults>
+      <!-- auth_admin or yes -->
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/share/cubic/commands/stop-process</annotate>
+  </action>
+  <action id="test-command">
+    <description>Run the test command for Cubic.</description>
+    <message>Enter the administrator password to run the test command for Cubic.</message>
+    <icon_name>cubic</icon_name>
+    <defaults>
+      <!-- auth_admin or yes -->
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/share/cubic/commands/test-command</annotate>
+  </action>
+  <action id="unmount-iso">
+    <description>Unmount an ISO for Cubic.</description>
+    <message>Enter the administrator password to unmount an ISO for Cubic.</message>
+    <icon_name>cubic</icon_name>
+    <defaults>
+      <!-- auth_admin or yes -->
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/share/cubic/commands/unmount-iso</annotate>
+  </action>
+</policyconfig>

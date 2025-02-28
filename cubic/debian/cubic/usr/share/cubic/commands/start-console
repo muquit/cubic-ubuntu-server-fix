@@ -1,0 +1,138 @@
+#!/bin/bash
+
+########################################################################
+#                                                                      #
+# start-console                                                        #
+#                                                                      #
+# Copyright (C) 2020 PJ Singh <psingh.cubic@gmail.com>                 #
+#                                                                      #
+########################################################################
+
+########################################################################
+#                                                                      #
+# This file is part of Cubic - Custom Ubuntu ISO Creator.              #
+#                                                                      #
+# Cubic is free software: you can redistribute it and/or modify        #
+# it under the terms of the GNU General Public License as published by #
+# the Free Software Foundation, either version 3 of the License, or    #
+# (at your option) any later version.                                  #
+#                                                                      #
+# Cubic is distributed in the hope that it will be useful,             #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of       #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the         #
+# GNU General Public License for more details.                         #
+#                                                                      #
+# You should have received a copy of the GNU General Public License    #
+# along with Cubic. If not, see <http://www.gnu.org/licenses/>.        #
+#                                                                      #
+########################################################################
+
+# Start the virtual environment for Cubic.
+
+########################################################################
+# References
+########################################################################
+
+# http://manpages.ubuntu.com/manpages/focal/man1/systemd-nspawn.1.html
+
+########################################################################
+# Constants
+########################################################################
+
+bind_path="/etc/resolv.conf"
+
+########################################################################
+# Arguments
+########################################################################
+
+program=${0}
+number_arguments=${#}
+machine_name=${1}
+directory=${2}
+
+# echo "program..................... ${program}"
+# echo "number of arguments......... ${number_arguments}"
+# echo "machine_name................ ${machine_name}"
+# echo "directory................... ${directory}"
+
+########################################################################
+# Command
+########################################################################
+
+# Automatic Networking (Not Networking on Ubuntu)
+# -----------------------------------------------
+# systemd-nspawn                  \
+# --quiet                         \
+# --notify-ready=yes              \
+# --machine "${machine_name}"     \
+# --directory "${directory}"
+
+# Networking: Option 1
+# --------------------
+#
+# This is very specific to Ubuntu, which uses /run/systemd/resolve.
+#
+# Bind...
+#     /run/systemd/resolve on the host
+# to...
+#     /run/resolvconf in the virtual environment
+# because...
+#    /etc/resolv.conf --> /run/resolvconf/resolv.conf
+#
+# systemd-nspawn                                   \
+# --quiet                                          \
+# --notify-ready=yes                               \
+# --bind-ro="/run/systemd/resolve:/run/resolvconf" \
+# --machine "${machine_name}"                      \
+# --directory "${directory}"
+
+# Networking: Option 2
+# --------------------
+#
+# Bind the ~target~ of...
+#     /etc/resolv.conf on the host
+# to the ~target~ of...
+#     /etc/resolv.conf in the virtual environment
+# because on the host...
+#     /etc/resolv.conf --> /run/systemd/resolve/stub-resolv.conf
+# and in the virtual environment...
+#     /etc/resolv.conf --> /run/resolvconf/resolv.conf
+#
+# systemd-nspawn                    \
+# --quiet                           \
+# --notify-ready=yes                \
+# --bind-ro="/etc/resolv.conf"      \
+# --machine "${machine_name}"       \
+# --directory "${directory}"
+
+# if [[ -L ${bind_path} ]]; then
+#     # Bind the host's /etc/resolv.conf file only if it is a symlink.
+
+if [[ -e ${bind_path} ]]; then
+    # Bind the host's resolv.conf file to the container's resolv.conf
+    # file, as read only, if the host's resolv.conf file exists. If the
+    # host's resolv.conf file is a link, then the target of the host's
+    # link will be bind mounted to the container's resolv.conf. If the
+    # container's resolv.conf file is a link, then the host's
+    # resolv.conf will be bind mounted to the target of container's
+    # link.
+    systemd-nspawn                  \
+    --quiet                         \
+    --notify-ready=yes              \
+    --register=yes                  \
+    --bind-ro="${bind_path}"        \
+    --machine="${machine_name}"     \
+    --directory="${directory}"
+else
+    # Automatically handle resolv.conf as outlined in:
+    # https://www.freedesktop.org/software/systemd/man/systemd-nspawn.html#--resolv-conf=
+    systemd-nspawn                  \
+    --quiet                         \
+    --notify-ready=yes              \
+    --register=yes                  \
+    --machine="${machine_name}"     \
+    --directory="${directory}"
+fi
+exit_code=$?
+exit $exit_code
+

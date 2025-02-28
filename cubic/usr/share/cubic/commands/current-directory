@@ -1,0 +1,72 @@
+#!/bin/bash
+
+########################################################################
+#                                                                      #
+# current-directory                                                    #
+#                                                                      #
+# Copyright (C) 2020 PJ Singh <psingh.cubic@gmail.com>                 #
+#                                                                      #
+########################################################################
+
+########################################################################
+#                                                                      #
+# This file is part of Cubic - Custom Ubuntu ISO Creator.              #
+#                                                                      #
+# Cubic is free software: you can redistribute it and/or modify        #
+# it under the terms of the GNU General Public License as published by #
+# the Free Software Foundation, either version 3 of the License, or    #
+# (at your option) any later version.                                  #
+#                                                                      #
+# Cubic is distributed in the hope that it will be useful,             #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of       #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the         #
+# GNU General Public License for more details.                         #
+#                                                                      #
+# You should have received a copy of the GNU General Public License    #
+# along with Cubic. If not, see <http://www.gnu.org/licenses/>.        #
+#                                                                      #
+########################################################################
+
+# Get the virtual environment current directory for Cubic.
+
+########################################################################
+# Arguments
+########################################################################
+
+program=${0}
+number_arguments=${#}
+process_id=${1}
+
+# echo "program..................... ${program}"
+# echo "number of arguments......... ${number_arguments}"
+# echo "process id.................. ${process_id}"
+
+########################################################################
+# Command
+########################################################################
+
+# Do not echo the commands because the output is used by the application.
+# The expected output format of the readlink command is a directory
+# path.
+
+# Get the child process name and the child process id.
+process_info=($(ps --ppid $process_id -o comm= -o pid=))
+process_name=${process_info[0]}
+process_id=${process_info[1]}
+
+# echo "The process name is ${process_name} and the process id is ${process_id}"
+
+while [[ ${process_name} != "bash" ]]; do
+    # Get the child process name and the child process id.
+    process_info=($(ps --ppid $process_id -o comm= -o pid=))
+    process_name=${process_info[0]}
+    process_id=${process_info[1]}
+    # echo "The process name is ${process_name} and the process id is ${process_id}"
+done
+
+# echo "The final process name is ${process_name} and the process id is ${process_id}"
+
+current_directory=$(readlink /proc/$process_id/cwd)
+# echo "The current directory is ${current_directory}"
+
+echo ${current_directory}

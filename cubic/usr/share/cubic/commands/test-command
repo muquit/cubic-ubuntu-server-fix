@@ -1,0 +1,72 @@
+#!/bin/bash
+
+########################################################################
+#                                                                      #
+# test-command                                                         #
+#                                                                      #
+# Copyright (C) 2020 PJ Singh <psingh.cubic@gmail.com>                 #
+#                                                                      #
+########################################################################
+
+########################################################################
+#                                                                      #
+# This file is part of Cubic - Custom Ubuntu ISO Creator.              #
+#                                                                      #
+# Cubic is free software: you can redistribute it and/or modify        #
+# it under the terms of the GNU General Public License as published by #
+# the Free Software Foundation, either version 3 of the License, or    #
+# (at your option) any later version.                                  #
+#                                                                      #
+# Cubic is distributed in the hope that it will be useful,             #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of       #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the         #
+# GNU General Public License for more details.                         #
+#                                                                      #
+# You should have received a copy of the GNU General Public License    #
+# along with Cubic. If not, see <http://www.gnu.org/licenses/>.        #
+#                                                                      #
+########################################################################
+
+# Run the test command for Cubic.
+
+########################################################################
+# Arguments
+########################################################################
+
+program=${0}
+number_arguments=${#}
+
+echo "program..................... ${program}"
+echo "number of arguments......... ${number_arguments}"
+
+########################################################################
+# Command
+########################################################################
+
+percent_final=100
+random_step=$(( ( RANDOM % 3 )  + 1 ))
+for ((percent_current=0; percent_current<=percent_final; percent_current+=$random_step)); do
+    echo "Processing $percent_current% of 100."
+    random_delay=$(( ( RANDOM % 3 )  + 1 ))
+    random_delay=$(echo "scale=2; $random_delay/10.0" | bc)
+    random_step=$(( ( RANDOM % 9 )  + 1 ))
+    next_percent=$(( percent_current + random_step ))
+    echo "The delay is $random_delay and the step is $random_step. The next percent is $next_percent."
+    sleep $random_delay
+    random_stop=0
+    # random_stop=$(( (RANDOM % 5) + 1))
+    if [[ $random_stop == 5 ]]; then
+        echo "Randomly exiting."
+        exit 10
+    else
+        echo "Continuing."
+    fi
+done
+if [[ $next_percent > 100 ]]; then
+    echo "Since next percent $next_percent is > 100, we completed successfully."
+elif [[ $next_percent > 100 ]]; then
+    echo "Since next percent $next_percent is 100, we completed perfctly."
+else
+    echo "Since next percent $next_percent is < 100, we errored out."
+fi
+

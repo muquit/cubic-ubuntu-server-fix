@@ -1,0 +1,1288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+  project_page.ui
+
+  Copyright (C) 2020 PJ Singh <psingh.cubic@gmail.com>
+
+-->
+<!--
+
+  This file is part of Cubic - Custom Ubuntu ISO Creator.
+
+  Cubic is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Cubic is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with Cubic. If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<interface>
+  <requires lib="gtk+" version="3.22"/>
+  <object class="GtkImage" id="project_page__delete_image">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">edit-delete-symbolic</property>
+  </object>
+  <object class="GtkButton" id="project_page__delete_header_bar_button">
+    <property name="can-focus">True</property>
+    <property name="focus-on-click">False</property>
+    <property name="receives-default">True</property>
+    <property name="tooltip-text" translatable="yes">Delete this project</property>
+    <property name="image">project_page__delete_image</property>
+    <property name="always-show-image">True</property>
+    <signal name="clicked" handler="on_clicked__project_page__delete_header_bar_button" swapped="no"/>
+  </object>
+  <object class="GtkImage" id="project_page__directory_1_image">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">folder-symbolic</property>
+  </object>
+  <object class="GtkImage" id="project_page__directory_2_image">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">folder-symbolic</property>
+  </object>
+  <object class="GtkImage" id="project_page__redo_image">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">edit-redo-symbolic</property>
+  </object>
+  <object class="GtkImage" id="project_page__undo_image">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">edit-undo-symbolic</property>
+  </object>
+  <object class="GtkBox" id="project_page__header_bar_box">
+    <property name="can-focus">False</property>
+    <child>
+      <object class="GtkButton" id="project_page__undo_header_bar_button">
+        <property name="visible">True</property>
+        <property name="sensitive">False</property>
+        <property name="can-focus">True</property>
+        <property name="focus-on-click">False</property>
+        <property name="receives-default">True</property>
+        <property name="tooltip-text" translatable="yes">Undo changes to the custom disk values</property>
+        <property name="image">project_page__undo_image</property>
+        <property name="always-show-image">True</property>
+        <signal name="clicked" handler="on_clicked__project_page__undo_header_bar_button" swapped="no"/>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="project_page__redo_header_bar_button">
+        <property name="visible">True</property>
+        <property name="sensitive">False</property>
+        <property name="can-focus">True</property>
+        <property name="focus-on-click">False</property>
+        <property name="receives-default">True</property>
+        <property name="tooltip-text" translatable="yes">Redo changes to the custom disk values</property>
+        <property name="image">project_page__redo_image</property>
+        <property name="always-show-image">True</property>
+        <signal name="clicked" handler="on_clicked__project_page__redo_header_bar_button" swapped="no"/>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+    <style>
+      <class name="linked"/>
+    </style>
+  </object>
+  <object class="GtkImage" id="project_page__version_image">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">view-refresh-symbolic</property>
+  </object>
+  <!-- n-columns=1 n-rows=2 -->
+  <object class="GtkGrid" id="project_page">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <child>
+      <object class="GtkLabel">
+        <property name="width-request">894</property>
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="margin-left">24</property>
+        <property name="margin-right">24</property>
+        <property name="margin-top">18</property>
+        <property name="margin-bottom">18</property>
+        <property name="label" translatable="yes">Select the original disk image to customize.</property>
+        <property name="justify">fill</property>
+        <property name="wrap">True</property>
+        <property name="max-width-chars">0</property>
+        <property name="xalign">0</property>
+        <attributes>
+          <attribute name="scale" value="1.25"/>
+        </attributes>
+      </object>
+      <packing>
+        <property name="left-attach">0</property>
+        <property name="top-attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <!-- n-columns=2 n-rows=9 -->
+      <object class="GtkGrid">
+        <property name="width-request">894</property>
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="halign">center</property>
+        <property name="valign">center</property>
+        <property name="margin-bottom">18</property>
+        <property name="hexpand">True</property>
+        <property name="vexpand">True</property>
+        <property name="row-spacing">6</property>
+        <property name="column-spacing">24</property>
+        <property name="column-homogeneous">True</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Original Disk...
+</property>
+            <property name="wrap">True</property>
+            <property name="xalign">0</property>
+            <attributes>
+              <attribute name="weight" value="bold"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <!-- n-columns=4 n-rows=2 -->
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="hexpand">True</property>
+            <property name="column-spacing">12</property>
+            <child>
+              <object class="GtkLabel" id="project_page__original_iso_file_name_label">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Filename</property>
+                <property name="wrap">True</property>
+                <property name="xalign">1</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="project_page__original_iso_file_name_entry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="hexpand">True</property>
+                <property name="editable">False</property>
+                <signal name="changed" handler="on_changed__project_page__original_iso_file_name_entry" swapped="no"/>
+                <style>
+                  <class name="background"/>
+                </style>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="project_page__original_iso_file_name_open_button">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="tooltip-text" translatable="yes">Select the original disk image</property>
+                <property name="image">project_page__directory_1_image</property>
+                <property name="always-show-image">True</property>
+                <signal name="clicked" handler="on_clicked__project_page__original_iso_file_name_open_button" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left-attach">2</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="project_page__original_iso_file_name_status">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">cubic-blank-symbolic</property>
+              </object>
+              <packing>
+                <property name="left-attach">3</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="project_page__original_iso_file_name_message">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="opacity">0.5</property>
+                <property name="wrap">True</property>
+                <property name="max-width-chars">0</property>
+                <property name="xalign">0</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <!-- n-columns=4 n-rows=2 -->
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="hexpand">True</property>
+            <property name="column-spacing">12</property>
+            <child>
+              <object class="GtkLabel" id="project_page__original_iso_directory_label">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Directory</property>
+                <property name="wrap">True</property>
+                <property name="xalign">1</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="project_page__original_iso_directory_entry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="hexpand">True</property>
+                <property name="editable">False</property>
+                <signal name="changed" handler="on_changed__project_page__original_iso_directory_entry" swapped="no"/>
+                <style>
+                  <class name="background"/>
+                </style>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="project_page__original_iso_directory_status">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">cubic-blank-symbolic</property>
+              </object>
+              <packing>
+                <property name="left-attach">3</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="project_page__original_iso_directory_message">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="opacity">0.5</property>
+                <property name="wrap">True</property>
+                <property name="max-width-chars">0</property>
+                <property name="xalign">0</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">1</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <!-- n-columns=4 n-rows=2 -->
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="hexpand">True</property>
+            <property name="column-spacing">12</property>
+            <child>
+              <object class="GtkLabel" id="project_page__original_iso_volume_id_label">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Volume ID</property>
+                <property name="wrap">True</property>
+                <property name="xalign">1</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="project_page__original_iso_volume_id_entry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="hexpand">True</property>
+                <property name="editable">False</property>
+                <signal name="changed" handler="on_changed__project_page__original_iso_volume_id_entry" swapped="no"/>
+                <style>
+                  <class name="background"/>
+                </style>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="project_page__original_iso_volume_id_status">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">cubic-blank-symbolic</property>
+              </object>
+              <packing>
+                <property name="left-attach">3</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="project_page__original_iso_volume_id_message">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="opacity">0.5</property>
+                <property name="wrap">True</property>
+                <property name="max-width-chars">0</property>
+                <property name="xalign">0</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">1</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <!-- n-columns=4 n-rows=2 -->
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="hexpand">True</property>
+            <property name="column-spacing">12</property>
+            <child>
+              <object class="GtkLabel" id="project_page__original_iso_release_name_label">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Release</property>
+                <property name="wrap">True</property>
+                <property name="xalign">1</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="project_page__original_iso_release_name_entry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="hexpand">True</property>
+                <property name="editable">False</property>
+                <signal name="changed" handler="on_changed__project_page__original_iso_release_name_entry" swapped="no"/>
+                <style>
+                  <class name="background"/>
+                </style>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="project_page__original_iso_release_name_status">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+              </object>
+              <packing>
+                <property name="left-attach">3</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="project_page__original_iso_release_name_message">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="opacity">0.5</property>
+                <property name="wrap">True</property>
+                <property name="max-width-chars">0</property>
+                <property name="xalign">0</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">1</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">5</property>
+          </packing>
+        </child>
+        <child>
+          <!-- n-columns=4 n-rows=2 -->
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="hexpand">True</property>
+            <property name="column-spacing">12</property>
+            <child>
+              <object class="GtkLabel" id="project_page__original_iso_disk_name_label">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Disk Name</property>
+                <property name="wrap">True</property>
+                <property name="xalign">1</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="project_page__original_iso_disk_name_entry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="hexpand">True</property>
+                <property name="editable">False</property>
+                <signal name="changed" handler="on_changed__project_page__original_iso_disk_name_entry" swapped="no"/>
+                <style>
+                  <class name="background"/>
+                </style>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="project_page__original_iso_disk_name_status">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">cubic-blank-symbolic</property>
+              </object>
+              <packing>
+                <property name="left-attach">3</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="project_page__original_iso_disk_name_message">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="opacity">0.5</property>
+                <property name="wrap">True</property>
+                <property name="max-width-chars">0</property>
+                <property name="xalign">0</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">1</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">6</property>
+          </packing>
+        </child>
+        <child>
+          <!-- n-columns=4 n-rows=2 -->
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="hexpand">True</property>
+            <property name="column-spacing">12</property>
+            <child>
+              <object class="GtkLabel" id="project_page__original_iso_release_notes_url_label">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Release URL</property>
+                <property name="wrap">True</property>
+                <property name="xalign">1</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="project_page__original_iso_release_notes_url_entry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="hexpand">True</property>
+                <property name="editable">False</property>
+                <signal name="changed" handler="on_changed__project_page__original_iso_release_notes_url_entry" swapped="no"/>
+                <style>
+                  <class name="background"/>
+                </style>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="project_page__original_iso_release_notes_url_status">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">cubic-blank-symbolic</property>
+              </object>
+              <packing>
+                <property name="left-attach">3</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="project_page__original_iso_release_notes_url_message">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="opacity">0.5</property>
+                <property name="wrap">True</property>
+                <property name="max-width-chars">0</property>
+                <property name="xalign">0</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">1</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">7</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Custom Disk...
+</property>
+            <property name="wrap">True</property>
+            <property name="xalign">0</property>
+            <attributes>
+              <attribute name="weight" value="bold"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <!-- n-columns=4 n-rows=2 -->
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="hexpand">True</property>
+            <property name="column-spacing">12</property>
+            <child>
+              <object class="GtkLabel" id="project_page__custom_iso_version_number_label">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Version</property>
+                <property name="wrap">True</property>
+                <property name="xalign">1</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="project_page__custom_iso_version_number_entry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="hexpand">True</property>
+                <signal name="changed" handler="on_changed__project_page__custom_iso_version_number_entry" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="project_page__custom_iso_version_number_refresh_button">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="tooltip-text" translatable="yes">Refresh the version number</property>
+                <property name="image">project_page__version_image</property>
+                <property name="always-show-image">True</property>
+                <signal name="clicked" handler="on_clicked__project_page__custom_iso_version_number_refresh_button" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left-attach">2</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="project_page__custom_iso_version_number_status">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">cubic-blank-symbolic</property>
+              </object>
+              <packing>
+                <property name="left-attach">3</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="project_page__custom_iso_version_number_message">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="opacity">0.5</property>
+                <property name="wrap">True</property>
+                <property name="max-width-chars">0</property>
+                <property name="xalign">0</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <!-- n-columns=4 n-rows=2 -->
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="hexpand">True</property>
+            <property name="column-spacing">12</property>
+            <child>
+              <object class="GtkLabel" id="project_page__custom_iso_file_name_label">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Filename</property>
+                <property name="wrap">True</property>
+                <property name="xalign">1</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="project_page__custom_iso_file_name_entry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="hexpand">True</property>
+                <signal name="changed" handler="on_changed__project_page__custom_iso_file_name_entry" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="project_page__custom_iso_file_name_status">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+              </object>
+              <packing>
+                <property name="left-attach">3</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="project_page__custom_iso_file_name_message">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="opacity">0.5</property>
+                <property name="wrap">True</property>
+                <property name="max-width-chars">0</property>
+                <property name="xalign">0</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">1</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <!-- n-columns=4 n-rows=2 -->
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="hexpand">True</property>
+            <property name="column-spacing">12</property>
+            <child>
+              <object class="GtkLabel" id="project_page__custom_iso_directory_label">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Directory</property>
+                <property name="wrap">True</property>
+                <property name="xalign">1</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="project_page__custom_iso_directory_entry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="hexpand">True</property>
+                <property name="editable">False</property>
+                <signal name="changed" handler="on_changed__project_page__custom_iso_directory_entry" swapped="no"/>
+                <style>
+                  <class name="background"/>
+                </style>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="project_page__custom_iso_directory_open_button">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="tooltip-text" translatable="yes">Select the directory to save the custom disk image</property>
+                <property name="image">project_page__directory_2_image</property>
+                <property name="always-show-image">True</property>
+                <signal name="clicked" handler="on_clicked__project_page__custom_iso_directory_open_button" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left-attach">2</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="project_page__custom_iso_directory_status">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+              </object>
+              <packing>
+                <property name="left-attach">3</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="project_page__custom_iso_directory_message">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="opacity">0.5</property>
+                <property name="wrap">True</property>
+                <property name="max-width-chars">0</property>
+                <property name="xalign">0</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <!-- n-columns=4 n-rows=2 -->
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="hexpand">True</property>
+            <property name="column-spacing">12</property>
+            <child>
+              <object class="GtkLabel" id="project_page__custom_iso_volume_id_label">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Volume ID</property>
+                <property name="wrap">True</property>
+                <property name="xalign">1</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="project_page__custom_iso_volume_id_entry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="hexpand">True</property>
+                <property name="max-length">32</property>
+                <signal name="changed" handler="on_changed__project_page__custom_iso_volume_id_entry" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="project_page__custom_iso_volume_id_status">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+              </object>
+              <packing>
+                <property name="left-attach">3</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="project_page__custom_iso_volume_id_message">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="opacity">0.5</property>
+                <property name="wrap">True</property>
+                <property name="max-width-chars">0</property>
+                <property name="xalign">0</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">1</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <!-- n-columns=4 n-rows=2 -->
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="hexpand">True</property>
+            <property name="column-spacing">12</property>
+            <child>
+              <object class="GtkLabel" id="project_page__custom_iso_release_name_label">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Release</property>
+                <property name="wrap">True</property>
+                <property name="xalign">1</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="project_page__custom_iso_release_name_entry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="hexpand">True</property>
+                <signal name="changed" handler="on_changed__project_page__custom_iso_release_name_entry" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="project_page__custom_iso_release_name_status">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">cubic-blank-symbolic</property>
+              </object>
+              <packing>
+                <property name="left-attach">3</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="project_page__custom_iso_release_name_message">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="opacity">0.5</property>
+                <property name="wrap">True</property>
+                <property name="max-width-chars">0</property>
+                <property name="xalign">0</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">1</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">5</property>
+          </packing>
+        </child>
+        <child>
+          <!-- n-columns=4 n-rows=2 -->
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="hexpand">True</property>
+            <property name="column-spacing">12</property>
+            <child>
+              <object class="GtkLabel" id="project_page__custom_iso_disk_name_label">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Disk Name</property>
+                <property name="wrap">True</property>
+                <property name="xalign">1</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="project_page__custom_iso_disk_name_entry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="hexpand">True</property>
+                <signal name="changed" handler="on_changed__project_page__custom_iso_disk_name_entry" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="project_page__custom_iso_disk_name_status">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">cubic-blank-symbolic</property>
+              </object>
+              <packing>
+                <property name="left-attach">3</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="project_page__custom_iso_disk_name_message">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="opacity">0.5</property>
+                <property name="wrap">True</property>
+                <property name="max-width-chars">0</property>
+                <property name="xalign">0</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">1</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">6</property>
+          </packing>
+        </child>
+        <child>
+          <!-- n-columns=4 n-rows=2 -->
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="hexpand">True</property>
+            <property name="column-spacing">12</property>
+            <child>
+              <object class="GtkLabel" id="project_page__custom_iso_release_notes_url_label">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Release URL</property>
+                <property name="wrap">True</property>
+                <property name="xalign">1</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="project_page__custom_iso_release_notes_url_entry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="hexpand">True</property>
+                <signal name="changed" handler="on_changed__project_page__custom_iso_release_notes_url_entry" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="project_page__custom_iso_release_notes_url_status">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">cubic-blank-symbolic</property>
+              </object>
+              <packing>
+                <property name="left-attach">3</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="project_page__custom_iso_release_notes_url_message">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="opacity">0.5</property>
+                <property name="wrap">True</property>
+                <property name="max-width-chars">0</property>
+                <property name="xalign">0</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">1</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">7</property>
+          </packing>
+        </child>
+        <child>
+          <!-- n-columns=5 n-rows=1 -->
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="column-spacing">12</property>
+            <child>
+              <object class="GtkLabel" id="project_page__custom_update_os_release_label">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">OS Release</property>
+                <property name="xalign">1</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="project_page__custom_update_os_release_check_button">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="focus-on-click">False</property>
+                <property name="receives-default">False</property>
+                <property name="image-position">right</property>
+                <property name="draw-indicator">True</property>
+                <signal name="toggled" handler="on_toggled__project_page__custom_update_os_release_check_button" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="project_page__custom_update_os_release_instructions">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="valign">start</property>
+                <property name="hexpand">True</property>
+                <property name="label" translatable="yes">Update the release description.</property>
+                <property name="wrap">True</property>
+                <property name="max-width-chars">0</property>
+                <property name="xalign">0</property>
+              </object>
+              <packing>
+                <property name="left-attach">3</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="project_page__custom_update_os_release_status">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">cubic-blank-symbolic</property>
+              </object>
+              <packing>
+                <property name="left-attach">4</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">8</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+      <packing>
+        <property name="left-attach">0</property>
+        <property name="top-attach">1</property>
+      </packing>
+    </child>
+  </object>
+  <object class="GtkButton" id="project_page__test_header_bar_button">
+    <property name="label" translatable="yes"> Test </property>
+    <property name="sensitive">False</property>
+    <property name="can-focus">True</property>
+    <property name="receives-default">True</property>
+    <property name="tooltip-text" translatable="yes">Test the generated disk image</property>
+    <signal name="clicked" handler="on_clicked__project_page__test_header_bar_button" swapped="no"/>
+  </object>
+  <object class="GtkSizeGroup">
+    <widgets>
+      <widget name="project_page__original_iso_file_name_label"/>
+      <widget name="project_page__original_iso_directory_label"/>
+      <widget name="project_page__original_iso_volume_id_label"/>
+      <widget name="project_page__original_iso_release_name_label"/>
+      <widget name="project_page__original_iso_disk_name_label"/>
+      <widget name="project_page__original_iso_release_notes_url_label"/>
+      <widget name="project_page__custom_iso_version_number_label"/>
+      <widget name="project_page__custom_iso_file_name_label"/>
+      <widget name="project_page__custom_iso_directory_label"/>
+      <widget name="project_page__custom_iso_volume_id_label"/>
+      <widget name="project_page__custom_iso_release_name_label"/>
+      <widget name="project_page__custom_iso_disk_name_label"/>
+      <widget name="project_page__custom_iso_release_notes_url_label"/>
+      <widget name="project_page__custom_update_os_release_label"/>
+    </widgets>
+  </object>
+</interface>
