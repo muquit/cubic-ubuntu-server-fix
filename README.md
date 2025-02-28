@@ -7,7 +7,12 @@ I created this fix because I needed to create a custom Ubuntu Server ISO for a p
 
 This fix for Ubuntu Server ISO extraction in Cubic was developed collaboratively with Claude AI 3.7 Sonnet, working under my guidance and instructions. The AI assisted in diagnosing the issue, developing multiple solution approaches, and refining the code to properly handle Ubuntu Server's two-part squashfs structure.
 
-The original code was copied from the official Cubic repository at https://code.launchpad.net/cubic using `bzr branch lp:cubic`. This fix is provided as a temporary solution for those experiencing issues with Ubuntu Server ISO extraction. We will discontinue maintenance of this fix once the bug is fixed in the official Cubic codebase. If you use this fix, please consider submitting it to the Cubic developers to help improve the original software.
+The original code was copied from the official Cubic repository at https://code.launchpad.net/cubic using 
+    ```bash
+    bzr branch lp:cubic
+    ```
+
+This fix is provided as a temporary solution for those experiencing issues with Ubuntu Server ISO extraction. We will discontinue maintenance of this fix once the bug is fixed in the official Cubic codebase. If you use this fix, please consider submitting it to the Cubic developers to help improve the original software.
 
 ## Introduction
 
