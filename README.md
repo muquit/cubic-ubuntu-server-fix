@@ -14,7 +14,7 @@ This document describes a bug in [Cubic](https://github.com/cubic-linux/cubic) (
 
 ## Installation
 
-1. Download the pre-built .deb package from the [Releases](link-to-releases-page) page
+1. Download the pre-built .deb package from the [Releases](https://github.com/muquit/cubic-ubuntu-server-fix/releases/tag/1.0.1) page
 2. Install the package:
    ```bash
    sudo dpkg -i cubic_2024.09_all.deb
