@@ -1,6 +1,7 @@
 # Ubuntu Server ISO Extraction Bug Fix for Cubic
 
-As of February 27, 2025, the official Cubic tool (version 2024.09) is unable to properly extract and process Ubuntu Server ISOs.
+As of February 27, 2025, the official 
+[Cubic](https://github.com/PJ-Singh-001/Cubic) tool (version 2024.09) is unable to properly extract and process Ubuntu Server ISOs.
 
 I created this fix because I needed to create a custom Ubuntu Server ISO for a project and discovered that the official Cubic tool was unable to properly extract Ubuntu Server ISOs due to their two-part squashfs structure. After researching the issue, I found that many users on the Cubic GitHub wiki were experiencing the same problem without a working solution. This fix addresses that specific issue, allowing for successful customization of Ubuntu Server ISOs while we wait for an official fix from the Cubic developers.
 
@@ -10,7 +11,7 @@ The original code was copied from the official Cubic repository at https://code.
 
 ## Introduction
 
-This document describes a bug in [Cubic](https://github.com/cubic-linux/cubic) (Custom Ubuntu ISO Creator) that prevents proper extraction of Ubuntu Server ISOs and the solution we implemented. The issue occurs because Ubuntu Server ISOs have a two-part squashfs structure consisting of a base file (`ubuntu-server-minimal.squashfs`) and a secondary overlay file (`ubuntu-server-minimal.ubuntu-server.squashfs`). Cubic was only successfully extracting the first file and failing on the second, resulting in a non-functional ISO missing important components like WiFi drivers.
+This document describes a bug in [Cubic Issues](https://github.com/PJ-Singh-001/Cubic/issues/381) (Custom Ubuntu ISO Creator) that prevents proper extraction of Ubuntu Server ISOs and the solution we implemented. The issue occurs because Ubuntu Server ISOs have a two-part squashfs structure consisting of a base file (`ubuntu-server-minimal.squashfs`) and a secondary overlay file (`ubuntu-server-minimal.ubuntu-server.squashfs`). Cubic was only successfully extracting the first file and failing on the second, resulting in a non-functional ISO missing important components like WiFi drivers.
 
 ## Installation
 
@@ -23,7 +24,7 @@ This document describes a bug in [Cubic](https://github.com/cubic-linux/cubic) (
    ```bash
    sudo apt install -f
    ```
-4. Open a Terminal and type `cubic`
+4. Open a Terminal and type `cubic`. Then follow the cubic documentation.
 
 ## Testing Information
 
