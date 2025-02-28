@@ -3,7 +3,7 @@
 > Cubic (Custom Ubuntu ISO Creator) is a GUI wizard to create a customized Live ISO image for Ubuntu and Debian based distributions.
 
 As of February 27, 2025, the official
-[Cubic](https://github.com/PJ-Singh-001/Cubic) tool (version 2024.09) is unable to properly extract and process Ubuntu Server ISOs.
+[Cubic](https://github.com/PJ-Singh-001/Cubic) tool (version 2024.09) is unable to properly extract and process Ubuntu Server ISOs. It fails with an error message **Error: Unable to extract the compressed Linux file system.**
 
 I created this fix because I needed to create a custom Ubuntu Server ISO for a project and discovered that the official Cubic tool was unable to properly extract Ubuntu Server ISOs due to their two-part squashfs structure. After researching the issue, I found that many users on the Cubic GitHub wiki were experiencing the same problem without a working solution. This fix addresses that specific issue, allowing for successful customization of Ubuntu Server ISOs while we wait for an official fix from the Cubic developers.
 
@@ -63,7 +63,7 @@ For Ubuntu Server ISOs, the fix properly extracts both squashfs files, ensuring 
 
 ## The Problem
 
-When attempting to customize an Ubuntu Server ISO with Cubic, the extraction process would fail with the error: <span style="color:red">**Error: Unable to extract the compressed Linux file system.**</span> This happened because:
+When attempting to customize an Ubuntu Server ISO with Cubic, the extraction process would fail with the error: **Error: Unable to extract the compressed Linux file system.** This happened because:
 
 1. Ubuntu Server ISOs use a different structure than Desktop ISOs, with two squashfs files that need to be combined
 2. The original extraction method in Cubic was not designed to handle overlay squashfs files
