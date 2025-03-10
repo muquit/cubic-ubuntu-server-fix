@@ -57,7 +57,7 @@ Note: While the ISO now builds successfully, there may still be issues with WiFi
   cd cubic
   ./build.sh
   /bin/ls -lt ..
-    total 264
+  total 264
     drwxrwxr-x 5 muquit muquit   4096 Feb 26 23:04 cubic
     -rw-r--r-- 1 muquit muquit   1931 Feb 26 22:27 cubic_2024.09_amd64.build
     -rw-r--r-- 1 muquit muquit  29028 Feb 26 22:27 cubic_2024.09_amd64.changes
