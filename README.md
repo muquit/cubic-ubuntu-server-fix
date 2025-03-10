@@ -5,9 +5,9 @@
 As of February 27, 2025, the official
 [Cubic](https://github.com/PJ-Singh-001/Cubic) tool (version 2024.09) is unable to properly extract and process Ubuntu Server ISOs. It fails with an error message **Error: Unable to extract the compressed Linux file system.**
 
-I created this fix because I needed to create a custom Ubuntu Server ISO for a project and discovered that the official Cubic tool was unable to properly extract Ubuntu Server ISOs due to their two-part squashfs structure. After researching the issue, I found that many users on the Cubic GitHub wiki were experiencing the same problem without a working solution. This fix addresses that specific issue, allowing for successful customization of Ubuntu Server ISOs while we wait for an official fix from the Cubic developers.
+I created this fix because I needed to create a custom Ubuntu Server ISO for a project and discovered that the official Cubic tool was unable to properly extract Ubuntu Server ISOs due to their two-part squashfs structure. I tested it to create custom ISOs from **ubuntu-24.04.2-desktop-amd64.iso** and **ubuntu-24.10-live-server-amd64.iso**. A pre-built package is supplied for your convenience. If it works for you, please let me.
 
-This fix for Ubuntu Server ISO extraction in Cubic was developed collaboratively with Claude AI 3.7 Sonnet, working under my guidance and instructions. The AI assisted in diagnosing the issue, developing multiple solution approaches, and refining the code to properly handle Ubuntu Server's two-part squashfs structure.
+The fix is developed collaboratively with Claude AI 3.7 Sonnet, working under my guidance and instructions. The AI assisted in diagnosing the issue, developing multiple solution approaches, and refining the code to properly handle Ubuntu Server's two-part squashfs structure.
 
 The original code was copied from the official Cubic repository at https://code.launchpad.net/cubic using
 
@@ -25,7 +25,7 @@ This document describes a bug in [Cubic Issues](https://github.com/PJ-Singh-001/
 
 ## Installation
 
-1. Download the pre-built .deb package from the [Releases](https://github.com/muquit/cubic-ubuntu-server-fix/releases/tag/1.0.1) page
+1. Download the pre-built .deb package from the [Releases](https://github.com/muquit/cubic-ubuntu-server-fix/releases/tag/1.0.1) page. If you want to build the package yourself, please look at the **Building from source** section.
 2. Install the package:
    ```bash
    sudo dpkg -i cubic_2024.09_all.deb
@@ -49,8 +49,7 @@ For Ubuntu Server ISOs, the fix properly extracts both squashfs files, ensuring 
 
 ## Building from source
 
-- Install all dependencies. Look at cubic/debian/control for detalis. Run the scripts as a regular
-  user and not root.
+- If you need to build the package yourself: install all dependencies first. Look at cubic/debian/control for detalis. Run the scripts as a regular user and not root.
   ```bash
   cd cubic
   ./build.sh
