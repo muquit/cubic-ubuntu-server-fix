@@ -25,7 +25,7 @@ This document describes a bug in [Cubic Issues](https://github.com/PJ-Singh-001/
 
 ## Installation
 
-1. A pre-build package is available for your convenience. Please download the pre-built .deb package from the [Releases](https://github.com/muquit/cubic-ubuntu-server-fix/releases/tag/1.0.1) page. If you want to build the package yourself, please look at the **Building from source** section.  This package is tested to create custom ISOs from **ubuntu-24.04.2-desktop-amd64.iso** and **ubuntu-24.10-live-server-amd64.iso**.
+1. A pre-built package is available for your convenience. Please download the pre-built .deb package from the [Releases](https://github.com/muquit/cubic-ubuntu-server-fix/releases/tag/1.0.1) page. If you want to build the package yourself, please look at the **Building from source** section.  This package is tested to create custom ISOs from **ubuntu-24.04.2-desktop-amd64.iso** and **ubuntu-24.10-live-server-amd64.iso**.
 
 2. Install the package:
    ```bash
@@ -52,7 +52,7 @@ Note: While the ISO now builds successfully, there may still be issues with WiFi
 
 ## Building from source
 
-- If you need to build the package yourself: install all dependencies first. Look at cubic/debian/control for detalis. Run the scripts as a regular user and not root.
+- If you need to build the package yourself: install all dependencies first. Look at cubic/debian/control for details. Run the scripts as a regular user and not root.
   ```bash
   cd cubic
   ./build.sh
