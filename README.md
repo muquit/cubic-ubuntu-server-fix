@@ -47,6 +47,8 @@ The fixed Cubic binary was run on Ubuntu 24.04.2 LTS to create custom ISOs from 
 
 For Ubuntu Server ISOs, the fix properly extracts both squashfs files, ensuring all components (including WiFi drivers and other server-specific components) are included in the final customized ISO.
 
+Note: While the ISO now builds successfully, there may still be issues with WiFi functionality during installation if not connected to Ethernet. This appears to be a separate issue from the extraction problem.
+
 ## Building from source
 
 - If you need to build the package yourself: install all dependencies first. Look at cubic/debian/control for detalis. Run the scripts as a regular user and not root.
@@ -255,16 +257,6 @@ The key improvements in our solution:
      - Cleans up temporary files
 3. **Progress Reporting**: Splits the progress bar (0-50% for first file, 50-100% for second)
 4. **Error Handling**: Properly handles errors and ensures temporary files are cleaned up
-
-## Testing Results
-
-The solution has been successfully tested with Ubuntu Server ISOs. The modified Cubic can now:
-
-1. Extract both squashfs files properly
-2. Include all necessary components in the customized ISO
-3. Create a functional customized Ubuntu Server ISO
-
-Note: While the ISO now builds successfully, there may still be issues with WiFi functionality during installation if not connected to Ethernet. This appears to be a separate issue from the extraction problem.
 
 ## Implementation
 
