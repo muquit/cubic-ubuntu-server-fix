@@ -25,12 +25,12 @@ This document describes a bug in [Cubic Issues](https://github.com/PJ-Singh-001/
 
 ## Installation
 
-1. Download the pre-built .deb package from the [Releases](https://github.com/muquit/cubic-ubuntu-server-fix/releases/tag/1.0.1) page. If you want to build the package yourself, please look at the **Building from source** section.
+1. Please download the pre-built .deb package from the [Releases](https://github.com/muquit/cubic-ubuntu-server-fix/releases/tag/1.0.1) page. If you want to build the package yourself, please look at the **Building from source** section.
 2. Install the package:
    ```bash
    sudo dpkg -i cubic_2024.09_all.deb
    ```
-3. Install any missing dependencies
+3. Then install any missing dependencies
    ```bash
    sudo apt install -f
    ```
