@@ -258,10 +258,3 @@ The key improvements in our solution:
 3. **Progress Reporting**: Splits the progress bar (0-50% for first file, 50-100% for second)
 4. **Error Handling**: Properly handles errors and ensures temporary files are cleaned up
 
-## Implementation
-
-To implement this fix:
-
-1. Locate the `extract_page.py` file in your Cubic installation
-2. Replace the `extract_squashfs()` function with the code provided above
-3. Ensure all imports are properly included
