@@ -36,7 +36,7 @@ This document describes a bug in [Cubic Issues](https://github.com/PJ-Singh-001/
    ```
 4. Open a Terminal and type `cubic`. Then follow the cubic documentation.
 
-## Testing Information
+## Testing
 
 This fixed version of Cubic has been successfully tested with the following official Ubuntu ISOs:
 
