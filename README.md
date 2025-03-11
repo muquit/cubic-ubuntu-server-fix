@@ -23,7 +23,7 @@ This document describes a bug in [Cubic Issues](https://github.com/PJ-Singh-001/
 
 # Install pre-built package
 
-1. A pre-built package is available for your convenience. Please download the pre-built .deb package from the [Releases](https://github.com/muquit/cubic-ubuntu-server-fix/releases/tag/1.0.1) page. If you want to build the package yourself, please look at the [Building from source](#building-from-source)section. 
+1. A pre-built package is available for your convenience. Please download the pre-built .deb package from the [Releases](https://github.com/muquit/cubic-ubuntu-server-fix/releases/tag/1.0.1) page. If you want to build the package yourself, please look at the [Building from source](#building-from-source) section. 
 
 2. Install the package:
    ```bash
@@ -37,6 +37,8 @@ This document describes a bug in [Cubic Issues](https://github.com/PJ-Singh-001/
 # Building from source
 
 If you need to build the package yourself: install all dependencies first. Look at `cubic/debian/control` for details. 
+
+Clone the repo first, then follow the steps:
 
 ```
 $ cd cubic
