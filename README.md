@@ -86,10 +86,6 @@ We modified Cubic's extraction process to handle both squashfs files differently
 
 ### Files Modified
 
-- `extract_page.py`: Changed the `extract_squashfs()` function to handle overlay files differently
-
-### Key Method Changed
-
 [`extract_page.py`](https://github.com/muquit/cubic-ubuntu-server-fix/blob/main/cubic/debian/cubic/usr/share/cubic/cubic/pages/extract_page.py#L1081-L1168): Changed the `extract_squashfs()` function to handle overlay files differently
 
 ## How It Works
