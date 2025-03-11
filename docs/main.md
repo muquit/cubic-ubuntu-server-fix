@@ -7,4 +7,5 @@
 @[:markdown](test.md)
 @[:markdown](bug.md)
 @[:markdown](authors.md)
+@[:markdown](cubic_repo.md)
 @[:markdown](end.md)

@@ -6,6 +6,7 @@
 - [Ubuntu ISOs tested](#ubuntu-isos-tested)
 - [Files modified](#files-modified)
 - [Authors](#authors)
+- [Official Cubic Repo](#official-cubic-repo)
 
 # Ubuntu Server ISO Extraction Bug Fix for Cubic
 
@@ -114,5 +115,8 @@ If you use this fix, please consider submitting it to the Cubic developers
 to help improve the original software.
 
 
+# Official Cubic Repo
+
+https://code.launchpad.net/cubic
 ---
 This file is assembled from `docs/*.md` with [markdown_helper](https://github.com/BurdetteLamar/markdown_helper)
