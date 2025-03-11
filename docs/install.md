@@ -1,6 +1,6 @@
 # Install pre-built package
 
-1. A pre-built package is available for your convenience. Please download the pre-built .deb package from the [Releases](https://github.com/muquit/cubic-ubuntu-server-fix/releases/tag/1.0.1) page. If you want to build the package yourself, please look at the **Building from source** section.  This package is tested to create custom ISOs from **ubuntu-24.04.2-desktop-amd64.iso** and **ubuntu-24.10-live-server-amd64.iso**.
+1. A pre-built package is available for your convenience. Please download the pre-built .deb package from the [Releases](https://github.com/muquit/cubic-ubuntu-server-fix/releases/tag/1.0.1) page. If you want to build the package yourself, please look at the [Building from source](#building-from-source)section. 
 
 2. Install the package:
    ```bash
