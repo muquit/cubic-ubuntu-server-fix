@@ -16,7 +16,7 @@
 As of February 27, 2025, the official
 [Cubic](https://github.com/PJ-Singh-001/Cubic) tool (version 2024.09) is unable to properly extract and process Ubuntu Server ISOs. 
 
-It fails with an error message **Error: Unable to extract the compressed Linux file system.**
+After extracting around 50% mark, it fails with an error message **Error: Unable to extract the compressed Linux file system.**
 
 I created this fix because I needed to create a custom Ubuntu Server ISO for a project and discovered the bug. 
 
