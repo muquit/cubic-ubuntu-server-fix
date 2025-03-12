@@ -147,4 +147,4 @@ to help improve the original software.
 
 https://code.launchpad.net/cubic
 ---
-This file is assembled from `docs/*.md` with [markdown_helper](https://github.com/BurdetteLamar/markdown_helper)
+*This file is assembled from `docs/*.md` with [markdown_helper](https://github.com/BurdetteLamar/markdown_helper)*
