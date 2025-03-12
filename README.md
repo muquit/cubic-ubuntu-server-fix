@@ -57,7 +57,7 @@ TODO
 
 If you need to build the package yourself: install all dependencies first. Look at `cubic/debian/control` for details. 
 
-Clone the repo first, then follow the steps:
+Clone this repo first, then follow the steps:
 
 ```bash
 $ cd cubic
