@@ -14,7 +14,9 @@
 > Cubic (Custom Ubuntu ISO Creator) is a GUI wizard to create a customized Live ISO image for Ubuntu and Debian based distributions.
 
 As of February 27, 2025, the official
-[Cubic](https://github.com/PJ-Singh-001/Cubic) tool (version 2024.09) is unable to properly extract and process Ubuntu Server ISOs. It fails with an error message **Error: Unable to extract the compressed Linux file system.**
+[Cubic](https://github.com/PJ-Singh-001/Cubic) tool (version 2024.09) is unable to properly extract and process Ubuntu Server ISOs. 
+
+It fails with an error message **Error: Unable to extract the compressed Linux file system.**
 
 I created this fix because I needed to create a custom Ubuntu Server ISO for a project and discovered the bug. 
 
