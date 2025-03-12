@@ -11,3 +11,12 @@
    sudo apt install -f
    ```
 4. Open a Terminal and type `cubic`. Then follow the cubic documentation.
+
+**Note:** During the ISO customization process, at approximately 50% of the 
+progress, you'll be prompted with a password dialog. This dialog appears 
+because Cubic needs elevated privileges to extract the squashfs filesystem,
+which contains the Ubuntu system files. The tool uses pkexec (a PolicyKit 
+application) to run the extraction command with root permissions. You 
+should enter your own sudo password when prompted. This security measure 
+ensures that only authorized users can modify system files, as filesystem 
+extraction and manipulation require administrative access.
