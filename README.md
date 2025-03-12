@@ -112,8 +112,9 @@ This fixed version of Cubic has been successfully tested with the following offi
 
 |               ISO                  |         MD5 Sum                  |
 |------------------------------------|----------------------------------|
-| ubuntu-24.04.2-desktop-amd64.iso   | 094aefdb1dbbdad8aa99600f8413789b |
+| ubuntu-24.10-desktop-amd64.iso     | ea0baab241893d4f2b679e7179009e1c |
 | ubuntu-24.10-live-server-amd64.iso | eb5509ce027f207cfed6dbce6000dd2b |
+| ubuntu-24.04.2-desktop-amd64.iso   | 094aefdb1dbbdad8aa99600f8413789b |
 
 The fixed Cubic binary was run on Ubuntu 24.04.2 LTS to create the custom ISOs from both desktop and server images. Both resulting custom ISOs installed successfully, confirming that the fix works for both Ubuntu Desktop and Server ISO types.
 
