@@ -11,10 +11,10 @@ Look at the `build.sh` script:
 
 ```bash
 $ cat ./build.sh
-#!/bin/bash
-# muquit@muquit.com  Feb-23-2025
-debuild -b -uc -us
 ```
+\#!/bin/bash \
+\# muquit@muquit.com  Feb-23-2025 \
+debuild -b -uc -us 
 
 Build the package:
 
@@ -34,10 +34,10 @@ Look at the `install.sh` script:
 
 ```bash
 $ cat ./install.sh
-#!/bin/bash
-# muquit@muquit.com  Feb-23-2025
-sudo dpkg -i ../cubic_2024.09_all.deb
 ```
+\#!/bin/bash \
+\# muquit@muquit.com  Feb-23-2025 \
+sudo dpkg -i ../cubic\_2024.09\_all.deb
 
 Install the package:
 
