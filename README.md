@@ -2,6 +2,7 @@
 - [Ubuntu Server ISO Extraction Bug Fix for Cubic](#ubuntu-server-iso-extraction-bug-fix-for-cubic)
 - [Introduction](#introduction)
 - [Install pre-built package](#install-pre-built-package)
+- [Screenshots](#screenshots)
 - [Building from source](#building-from-source)
 - [Ubuntu ISOs tested](#ubuntu-isos-tested)
 - [Files modified](#files-modified)
@@ -45,6 +46,9 @@ application) to run the extraction command with root permissions. You
 should enter your own sudo password when prompted. This security measure 
 ensures that only authorized users can modify system files, as filesystem 
 extraction and manipulation require administrative access.
+# Screenshots
+
+TODO
 # Building from source
 
 If you need to build the package yourself: install all dependencies first. Look at `cubic/debian/control` for details. 

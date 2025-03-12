@@ -3,6 +3,7 @@
 @[:markdown](fix.md)
 @[:markdown](intro.md)
 @[:markdown](install.md)
+@[:markdown](screenshots.md)
 @[:markdown](build.md)
 @[:markdown](test.md)
 @[:markdown](bug.md)
