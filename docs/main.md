@@ -1,9 +1,8 @@
-@[:page_toc](## Page Contents)
+@[:page_toc](## Table Of Contents)
 
 @[:markdown](fix.md)
 @[:markdown](intro.md)
 @[:markdown](install.md)
-@[:markdown](screenshots.md)
 @[:markdown](build.md)
 @[:markdown](test.md)
 @[:markdown](bug.md)

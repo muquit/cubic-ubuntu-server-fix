@@ -1,9 +1,12 @@
-## Page Contents
+## Table Of Contents
 - [Ubuntu Server ISO Extraction Bug Fix for Cubic](#ubuntu-server-iso-extraction-bug-fix-for-cubic)
 - [Introduction](#introduction)
-- [Install pre-built package](#install-pre-built-package)
-- [Screenshots](#screenshots)
+- [Install supplied pre-built package](#install-supplied-pre-built-package)
 - [Building from source](#building-from-source)
+  - [Install dependencies](#install-dependencies)
+  - [Build the package:](#build-the-package)
+  - [Check](#check)
+  - [Install the built package](#install-the-built-package)
 - [Ubuntu ISOs tested](#ubuntu-isos-tested)
 - [Files modified](#files-modified)
 - [Authors](#authors)
@@ -28,7 +31,7 @@ This fix is provided as a temporary solution for those experiencing issues with 
 
 This document describes a bug in [Cubic Issues](https://github.com/PJ-Singh-001/Cubic/issues/381) that prevents proper extraction of Ubuntu Server ISOs and the solution we implemented. The issue occurs because Ubuntu Server ISOs have a two-part squashfs structure consisting of a base file (`ubuntu-server-minimal.squashfs`) and a secondary overlay file (`ubuntu-server-minimal.ubuntu-server.squashfs`). Cubic was only successfully extracting the first file and failing on the second, resulting in a non-functional ISO missing important components like WiFi drivers.
 
-# Install pre-built package
+# Install supplied pre-built package
 
 1. A pre-built package is available for your convenience. Please download it from the [Releases](https://github.com/muquit/cubic-ubuntu-server-fix/releases/tag/1.0.1) page. If you want to build the package yourself, please look at the [Building from source](#building-from-source) section. 
 
@@ -50,51 +53,44 @@ application) to run the extraction command with root permissions. You
 should enter your own sudo password when prompted. This security measure 
 ensures that only authorized users can modify system files, as filesystem 
 extraction and manipulation require administrative access.
-# Screenshots
-
-TODO
 # Building from source
 
 If you need to build the package yourself: install all dependencies first. Look at `cubic/debian/control` for details. 
 
 Clone this repo first, then follow the steps:
 
-```bash
+## Install dependencies
+
+```
 $ cd cubic
 ```
-Look at the `build.sh` script:
 
-```bash
-$ cat ./build.sh
+Look at `install_deps.sh`.  Install the dependencies:
 ```
-\#!/bin/bash \
-\# muquit@muquit.com  Feb-23-2025 \
-debuild -b -uc -us 
+$ ./install_deps.sh
+```
 
-Build the package:
-
-```bash
+## Build the package:
+Look at the `build.sh` script.  Build the package:
+```
 $ ./build.sh
+```
+## Check
+Check if the debian package is created or not
+```
 $ /bin/ls -lt ..
 total 264
 drwxrwxr-x 5 muquit muquit   4096 Feb 26 23:04 cubic
 -rw-r--r-- 1 muquit muquit   1931 Feb 26 22:27 cubic_2024.09_amd64.build
 -rw-r--r-- 1 muquit muquit  29028 Feb 26 22:27 cubic_2024.09_amd64.changes
 -rw-r--r-- 1 muquit muquit  16705 Feb 26 22:27 cubic_2024.09_amd64.buildinfo
--rw-r--r-- 1 muquit muquit 207850 Feb 26 22:27 cubic_2024.09_all.deb <<<<<<<<<<
+-rw-r--r-- 1 muquit muquit 207850 Feb 26 22:27 cubic_2024.09_all.deb
+                                               ^^^^^^^^^^^^^^^^^^^^^
 ```
-If the build is successful, the package **cubic_2024.09_all.deb** will be created. To install:
+If the build is successful, the package **cubic_2024.09_all.deb** will be created.
 
-Look at the `install.sh` script:
-
-```bash
-$ cat ./install.sh
-```
-\#!/bin/bash \
-\# muquit@muquit.com  Feb-23-2025 \
-sudo dpkg -i ../cubic\_2024.09\_all.deb
-
-Install the package:
+## Install the built package
+Look at the `install.sh` script.  Install the built debian package:
 
 ```bash
 $ ./install.sh
