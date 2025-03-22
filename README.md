@@ -8,6 +8,7 @@
 - [Files modified](#files-modified)
 - [Authors](#authors)
 - [Official Cubic Repo](#official-cubic-repo)
+- [Download Counts](#download-counts)
 
 # Ubuntu Server ISO Extraction Bug Fix for Cubic
 
@@ -166,5 +167,15 @@ to help improve the original software.
 # Official Cubic Repo
 
 https://code.launchpad.net/cubic
+# Download Counts
+| File | Downloads |
+| ---- | --------- |
+| cubic_2024.09_all.deb | 41 |
+
+---
+
+Generated on: Mar-21-2025  
+Generated with: https://github.com/muquit/githubdownloadcount-go
+
 ---
 *This file is assembled from `docs/*.md` with [markdown_helper](https://github.com/BurdetteLamar/markdown_helper)*

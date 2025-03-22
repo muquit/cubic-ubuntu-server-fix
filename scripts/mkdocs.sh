@@ -3,7 +3,13 @@
 MH="markdown_helper"
 RM="/bin/rm -f"
 DOC_DIR="./docs"
+
+# generate Download count doc
+# I know this repo has a Releases page
+echo "--  Generating Download Count page ..."
+githubdownloadcount-go -user=muquit -project=cubic-ubuntu-server-fix -markdown > ${DOC_DIR}/downloads.md
+
 pushd $DOC_DIR >/dev/null 
-echo " - Assembling README.md"
+echo " - Assembling README.md ..."
 ${MH} include --pristine main.md ../README.md
 popd >/dev/null

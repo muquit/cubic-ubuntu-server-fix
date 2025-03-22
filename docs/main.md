@@ -9,4 +9,5 @@
 @[:markdown](bug.md)
 @[:markdown](authors.md)
 @[:markdown](cubic_repo.md)
+@[:markdown](downloads.md)
 @[:markdown](end.md)
