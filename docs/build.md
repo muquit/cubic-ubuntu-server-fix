@@ -4,42 +4,38 @@ If you need to build the package yourself: install all dependencies first. Look 
 
 Clone this repo first, then follow the steps:
 
-```bash
+## Install dependencies
+
+```
 $ cd cubic
 ```
-Look at the `build.sh` script:
 
-```bash
-$ cat ./build.sh
+Look at `install_deps.sh`.  Install the dependencies:
 ```
-\#!/bin/bash \
-\# muquit@muquit.com  Feb-23-2025 \
-debuild -b -uc -us 
+$ ./install_deps.sh
+```
 
-Build the package:
-
-```bash
+## Build the package:
+Look at the `build.sh` script.  Build the package:
+```
 $ ./build.sh
+```
+## Check
+Check if the debian package is created or not
+```
 $ /bin/ls -lt ..
 total 264
 drwxrwxr-x 5 muquit muquit   4096 Feb 26 23:04 cubic
 -rw-r--r-- 1 muquit muquit   1931 Feb 26 22:27 cubic_2024.09_amd64.build
 -rw-r--r-- 1 muquit muquit  29028 Feb 26 22:27 cubic_2024.09_amd64.changes
 -rw-r--r-- 1 muquit muquit  16705 Feb 26 22:27 cubic_2024.09_amd64.buildinfo
--rw-r--r-- 1 muquit muquit 207850 Feb 26 22:27 cubic_2024.09_all.deb <<<<<<<<<<
+-rw-r--r-- 1 muquit muquit 207850 Feb 26 22:27 cubic_2024.09_all.deb
+                                               ^^^^^^^^^^^^^^^^^^^^^
 ```
-If the build is successful, the package **cubic_2024.09_all.deb** will be created. To install:
+If the build is successful, the package **cubic_2024.09_all.deb** will be created.
 
-Look at the `install.sh` script:
-
-```bash
-$ cat ./install.sh
-```
-\#!/bin/bash \
-\# muquit@muquit.com  Feb-23-2025 \
-sudo dpkg -i ../cubic\_2024.09\_all.deb
-
-Install the package:
+## Install the built package
+Look at the `install.sh` script.  Install the built debian package:
 
 ```bash
 $ ./install.sh
