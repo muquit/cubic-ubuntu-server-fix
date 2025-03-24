@@ -1,5 +1,3 @@
-API URL: https://api.github.com/repos/muquit/cubic-ubuntu-server-fix/releases
-
 # Download Counts
 | File | Downloads |
 | ---- | --------- |

@@ -163,8 +163,6 @@ to help improve the original software.
 # Official Cubic Repo
 
 https://code.launchpad.net/cubic
-API URL: https://api.github.com/repos/muquit/cubic-ubuntu-server-fix/releases
-
 # Download Counts
 | File | Downloads |
 | ---- | --------- |
