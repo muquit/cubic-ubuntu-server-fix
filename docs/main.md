@@ -1,3 +1,5 @@
+[![Downloads](https://img.shields.io/github/downloads/muquit/cubic-ubuntu-server-fix/total.svg)](https://github.com/muquit/cubic-ubuntu-server-fix/releases)
+
 @[:page_toc](## Table Of Contents)
 
 @[:markdown](fix.md)
@@ -8,5 +10,4 @@
 @[:markdown](bug.md)
 @[:markdown](authors.md)
 @[:markdown](cubic_repo.md)
-@[:markdown](downloads.md)
 @[:markdown](end.md)

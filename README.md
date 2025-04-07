@@ -1,3 +1,5 @@
+[![Downloads](https://img.shields.io/github/downloads/muquit/cubic-ubuntu-server-fix/total.svg)](https://github.com/muquit/cubic-ubuntu-server-fix/releases)
+
 ## Table Of Contents
 - [Ubuntu Server ISO Extraction Bug Fix for Cubic](#ubuntu-server-iso-extraction-bug-fix-for-cubic)
 - [Introduction](#introduction)
@@ -11,7 +13,6 @@
 - [Files modified](#files-modified)
 - [Authors](#authors)
 - [Official Cubic Repo](#official-cubic-repo)
-- [Download Counts](#download-counts)
 
 # Ubuntu Server ISO Extraction Bug Fix for Cubic
 
@@ -163,15 +164,5 @@ to help improve the original software.
 # Official Cubic Repo
 
 https://code.launchpad.net/cubic
-# Download Counts
-| File | Downloads |
-| ---- | --------- |
-| cubic_2024.09_all.deb | 46 |
-
-<sub>Total Downloads: 46</sub>  
-<sub>Generated on: Mar-24-2025</sub>  
-<sub>API Link: [https://api.github.com/repos/muquit/cubic-ubuntu-server-fix/releases](https://api.github.com/repos/muquit/cubic-ubuntu-server-fix/releases)</sub>  
-<sub>Generated with: https://github.com/muquit/githubdownloadcount-go</sub>  
-
 ---
 *This file is assembled from `docs/*.md` with [markdown_helper](https://github.com/BurdetteLamar/markdown_helper)*
