@@ -1,9 +1,10 @@
 #!/bin/bash
 
-# Define paths
+########################################################################
+# Install built cubic package
+# muquit@muquit.com  May-11-2025 
+########################################################################
 PROJECT_ROOT=$(pwd)
-
-# Critical files that should be present in the package
 CRITICAL_FILES=(
     "./usr/bin/cubic"
     "./usr/share/cubic/cubic_wizard.py"
@@ -12,7 +13,6 @@ CRITICAL_FILES=(
     "./usr/share/cubic/cubic/pages/generate_page.py"
 )
 
-# Function to ask for confirmation
 confirm_install() {
     echo -n "Do you want to install the package now? (y/n): "
     read answer
@@ -27,7 +27,6 @@ confirm_install() {
     fi
 }
 
-# Load build info if exists
 load_build_info() {
     BUILD_INFO_FILE="${PROJECT_ROOT}/.build_info"
     if [ -f "$BUILD_INFO_FILE" ]; then
@@ -38,7 +37,6 @@ load_build_info() {
         fi
     fi
     
-    # If not found in build info or file doesn't exist, search for it
     DEB_FILE=$(find "${PROJECT_ROOT}" -maxdepth 1 -name "cubic_*.deb" -type f -print -quit)
     if [ -n "$DEB_FILE" ]; then
         echo "Found Cubic package: $DEB_FILE"
@@ -49,7 +47,6 @@ load_build_info() {
     fi
 }
 
-# Verify the package contents
 verify_package() {
     echo "Checking package contents..."
     
@@ -76,7 +73,6 @@ verify_package() {
     fi
 }
 
-# Install the package
 install_package() {
     echo "Installing Cubic package..."
     
@@ -99,7 +95,6 @@ install_package() {
     fi
 }
 
-# Verify installation by checking version
 verify_installation() {
     echo "Verifying installation"
     echo "======================"
@@ -114,8 +109,6 @@ verify_installation() {
     fi
 }
 
-################################################
-################################################
 doit() {
     # Load build info or find .deb file
     if load_build_info; then
@@ -146,5 +139,6 @@ doit() {
     fi
 }
 
-# Run the main function
+########################################################################
+########################################################################
 doit

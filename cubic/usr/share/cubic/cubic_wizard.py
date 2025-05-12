@@ -91,9 +91,16 @@ if arguments.version:
     display_version = constructor.get_display_version(version)
     urls = constructor.decode_object(CUBIC_URLS)
     website = urls[CUBIC_WEBSITE]
-    print(f'Cubic version... {display_version}')
+#    print(f'Cubic version... {display_version}')
+#    print(f'Copyright....... {CUBIC_COPYRIGHT}')
+#    print(f'Website......... {website}')
+    print(f"Cubic version... {display_version}-ubuntu-server-fix")
     print(f'Copyright....... {CUBIC_COPYRIGHT}')
     print(f'Website......... {website}')
+    print(f'Modified by..... Muhammad Muquit https://www.muquit.com/')
+    print(f'Fix URL......... https://github.com/muquit/cubic-ubuntu-server-fix')
+
+
     exit()
 
 ########################################################################

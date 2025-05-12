@@ -1,11 +1,14 @@
 #!/bin/bash
 
-# Define paths
+########################################################################
+# build cubic with debuild -b -uc -us
+# muquit@muquit.com  May-11-2025 
+########################################################################
+
 PROJECT_ROOT=$(pwd)
 SRC_DIR="${PROJECT_ROOT}/cubic"
 BUILD_OUTPUT_DIR="${PROJECT_ROOT}"
 
-# Clean up any previous build artifacts
 clean_build_artifacts() {
     echo "Cleaning previous build artifacts..."
     rm -f "${BUILD_OUTPUT_DIR}"/*.deb
@@ -13,7 +16,6 @@ clean_build_artifacts() {
     rm -f "${BUILD_OUTPUT_DIR}"/*.changes
 }
 
-# Run the build command from src directory
 build_package() {
     echo "Building package..."
     cd "${SRC_DIR}" || { echo "Error: src directory not found!"; exit 1; }
@@ -28,7 +30,6 @@ build_package() {
     fi
 }
 
-# Find the generated .deb file
 find_deb_file() {
     DEB_FILE=$(find "${BUILD_OUTPUT_DIR}" -maxdepth 1 -name "cubic_*.deb" -type f -print -quit)
     if [ -n "$DEB_FILE" ]; then
@@ -41,7 +42,6 @@ find_deb_file() {
     fi
 }
 
-# Main script
 doit() {
     # Clean up first
     clean_build_artifacts
@@ -65,5 +65,6 @@ doit() {
     fi
 }
 
-# Run the doit function
+######################################################
+######################################################
 doit

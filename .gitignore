@@ -1,12 +1,30 @@
-cubic_2024.09_all.deb
-cubic_2024.09_amd64.build
-cubic_2024.09_amd64.buildinfo
-cubic_2024.09_amd64.changes
+# Version control directories
+.bzr/
+.git/
+.svn/
+
+# Build artifacts
+*.deb
 *.buildinfo
 *.changes
 *.build
+
+# Debian build directories
 debian/cubic/
 debian/.debhelper/
+debian/debhelper-build-stamp
 debian/files
 debian/*.log
 debian/*.substvars
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Editor backups
+*~
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
