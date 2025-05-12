@@ -35,6 +35,9 @@ This document describes a bug in [Cubic Issues](https://github.com/PJ-Singh-001/
 
 # Install supplied pre-built package
 
+**NOTE** The package does not work properly on Ubuntu 24.04.2 LTS desktop. The symptom is cubic will not pop the dialog to enter sudo password and due to this, the size of ISO will be much smaller and will not install. It is due to 24.04 has replaced policykit-1 with polkitd. Try Ubuntu 22.04 in the meantime. I will fix it when I get some time. (May-11-2025)
+
+
 1. A pre-built package is available for your convenience. Please download it from the [Releases](https://github.com/muquit/cubic-ubuntu-server-fix/releases/tag/1.0.1) page. If you want to build the package yourself, please look at the [Building from source](#building-from-source) section. 
 
 2. Install the package:
@@ -57,15 +60,26 @@ ensures that only authorized users can modify system files, as filesystem
 extraction and manipulation require administrative access.
 # Building from source
 
+⚠️  Ubuntu 24.04 Build Issue
+
+**NOTE** The build package does not seem to work if built on ubuntu 24.04.2.
+You will see a  message:
+
+```
+E: cubic: depends-on-obsolete-package Depends: policykit-1 (>= 0.105) => 
+polkitd and optionally pkexec
+```
+
+It is due to 24.04 has replaced policykit-1 with polkitd. Try ubuntu 22.04 in 
+the mean time. I will fix it when get some time. Therefore, try Ubuntu 22 in
+the mean time.
+(May-11-2025)
+
 If you need to build the package yourself: install all dependencies first. Look at `cubic/debian/control` for details. 
 
 Clone this repo first, then follow the steps:
 
 ## Install dependencies
-
-```
-$ cd cubic
-```
 
 Look at `install_deps.sh`.  Install the dependencies:
 ```
@@ -75,7 +89,7 @@ $ ./install_deps.sh
 ## Build the package:
 Look at the `build.sh` script.  Build the package:
 ```
-$ ./build.sh
+$ ./build_cubic.sh
 ```
 ## Check
 Check if the debian package is created or not
@@ -95,7 +109,7 @@ If the build is successful, the package **cubic_2024.09_all.deb** will be create
 Look at the `install.sh` script.  Install the built debian package:
 
 ```bash
-$ ./install.sh
+$ ./install_cubic.sh
 ```
 Note: The original code was copied from the official Cubic repository at https://code.launchpad.net/cubic using
 
