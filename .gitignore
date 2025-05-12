@@ -2,3 +2,11 @@ cubic_2024.09_all.deb
 cubic_2024.09_amd64.build
 cubic_2024.09_amd64.buildinfo
 cubic_2024.09_amd64.changes
+*.buildinfo
+*.changes
+*.build
+debian/cubic/
+debian/.debhelper/
+debian/files
+debian/*.log
+debian/*.substvars
